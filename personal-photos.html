@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H G O | Fotografía Personal &amp; Libre</title>
+    <meta name="description" content="Galería de fotografía artística, dirección de arte y retratos conceptuales libres.">
+    <!-- Google Fonts: Outfit, Courier Prime -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-page {
+            background-color: #090a0d;
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .gallery-header-block {
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--ff-main);
+            color: var(--clr-text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-fast);
+            background: none;
+            border: 1px solid var(--clr-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .btn-back:hover {
+            color: var(--clr-text-main);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 12px var(--clr-primary-glow);
+            transform: translateX(-4px);
+        }
+
+        .gallery-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--clr-text-main) 30%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.15rem;
+            color: var(--clr-text-muted);
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gallery-section-title {
+            font-family: var(--ff-mono);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+            margin: 4rem 0 2rem 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--clr-primary);
+            padding-left: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background-color: var(--clr-bg-card);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--clr-primary);
+            box-shadow: 0 15px 30px rgba(185, 28, 28, 0.15);
+        }
+
+        .gallery-preview {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Unified aspect ratio */
+            background-color: #030406;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-preview img {
+            transform: scale(1.05);
+        }
+
+        .preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gallery-preview:hover .preview-overlay {
+            opacity: 1;
+        }
+
+        .overlay-icon {
+            background-color: var(--clr-primary);
+            color: #fff;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 20px rgba(185, 28, 28, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gallery-preview:hover .overlay-icon {
+            transform: scale(1);
+        }
+
+        /* Lightbox Window Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 7, 9, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content-container {
+            max-width: 90%;
+            max-height: 85%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--clr-border);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--clr-text-main);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            color: var(--clr-primary);
+            transform: scale(1.1);
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--clr-border);
+            color: var(--clr-text-main);
+            font-size: 2rem;
+            padding: 0.8rem 1.1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: var(--transition-fast);
+            z-index: 2010;
+            user-select: none;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-prev {
+            left: -80px;
+        }
+
+        .lightbox-next {
+            right: -80px;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background-color: var(--clr-primary);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 15px var(--clr-primary-glow);
+            color: #fff;
+        }
+
+        @media (max-width: 992px) {
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+            .lightbox-close {
+                top: -60px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="gallery-page">
+    <div class="glow-spot spot-1"></div>
+    <div class="glow-spot spot-2"></div>
+
+    <div class="container">
+        <!-- Navigation Header -->
+        <header class="gallery-nav">
+            <a href="index.html" class="btn-back" id="back-btn" data-i18n="back-btn-text">← Volver al Inicio</a>
+            <button id="language-toggle-btn" class="lang-toggle-btn">EN</button>
+        </header>
+
+        <!-- Gallery Header Details -->
+        <div class="gallery-header-block">
+            <h1 class="gallery-title" data-i18n="gallery-title">Fotografía Personal</h1>
+            <p class="gallery-subtitle" data-i18n="gallery-desc">Retratos conceptuales, fotografía artística en set y experimentación visual libre.</p>
+        </div>
+
+        <!-- === SECCIÓN DE FOTOS === -->
+        <h2 class="gallery-section-title" data-i18n="sec-photos-grid">Galería de Fotos</h2>
+        <div class="gallery-grid">
+            
+            <!-- Photo 1: Portada (Landscape) -->
+            <div class="gallery-item landscape">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/portada-fotos.jpg" alt="Fotografía Personal - Portada">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 2: IMG_1672 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_1672.jpg" alt="Fotografía Personal - IMG_1672">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 3: IMG_1877 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_1877.jpg" alt="Fotografía Personal - IMG_1877">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 4: IMG_1880 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_1880.jpg" alt="Fotografía Personal - IMG_1880">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 5: IMG_1914 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_1914.jpg" alt="Fotografía Personal - IMG_1914">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 6: IMG_3154 (Landscape) -->
+            <div class="gallery-item landscape">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_3154.JPG" alt="Fotografía Personal - IMG_3154">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 7: IMG_4693 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_4693.jpg" alt="Fotografía Personal - IMG_4693">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 8: IMG_5385 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_5385.jpg" alt="Fotografía Personal - IMG_5385">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 9: IMG_5386 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_5386.jpg" alt="Fotografía Personal - IMG_5386">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 10: IMG_8154 (Portrait) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <img src="assets/Personal/IMG_8154.jpg" alt="Fotografía Personal - IMG_8154">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Image Lightbox Window -->
+    <div class="lightbox" id="image-lightbox">
+        <div class="lightbox-content-container">
+            <button class="lightbox-close" id="lightbox-close-btn">&times;</button>
+            <button class="lightbox-prev" id="lightbox-prev-btn">&#10094;</button>
+            <img src="" alt="Fullscreen Preview" class="lightbox-img" id="lightbox-img">
+            <button class="lightbox-next" id="lightbox-next-btn">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Script for Gallery Page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lightbox controller for image expansions with slide show navigation
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('lightbox-close-btn');
+            const prevBtn = document.getElementById('lightbox-prev-btn');
+            const nextBtn = document.getElementById('lightbox-next-btn');
+            const imagePreviews = Array.from(document.querySelectorAll('.gallery-preview img'));
+            let currentImgIndex = 0;
+
+            const showImage = (index) => {
+                if (index < 0 || index >= imagePreviews.length) return;
+                currentImgIndex = index;
+                lightboxImg.src = imagePreviews[index].src;
+                lightboxImg.alt = imagePreviews[index].alt || 'Fullscreen Preview';
+            };
+
+            imagePreviews.forEach((img, index) => {
+                img.parentElement.addEventListener('click', () => {
+                    showImage(index);
+                    lightbox.classList.add('active');
+                });
+            });
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            };
+
+            const prevImage = () => {
+                const newIndex = (currentImgIndex - 1 + imagePreviews.length) % imagePreviews.length;
+                showImage(newIndex);
+            };
+
+            const nextImage = () => {
+                const newIndex = (currentImgIndex + 1) % imagePreviews.length;
+                showImage(newIndex);
+            };
+
+            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                }
+            });
+
+            // Touch Swipe Gestures
+            let startX = 0;
+            let startY = 0;
+            if (lightbox) {
+                lightbox.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                lightbox.addEventListener('touchend', (e) => {
+                    const diffX = e.changedTouches[0].clientX - startX;
+                    const diffY = e.changedTouches[0].clientY - startY;
+                    if (Math.abs(diffX) > 50 && Math.abs(diffY) < 100) {
+                        if (diffX > 0) {
+                            prevImage();
+                        } else {
+                            nextImage();
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            // Translation logic
+            const translations = {
+                es: {
+                    "back-btn-text": "← Volver al Inicio",
+                    "gallery-title": "Fotografía Personal",
+                    "gallery-desc": "Retratos conceptuales, fotografía artística en set y experimentación visual libre.",
+                    "sec-photos-grid": "Galería de Fotos"
+                },
+                en: {
+                    "back-btn-text": "← Back to Home",
+                    "gallery-title": "Personal Photography",
+                    "gallery-desc": "Conceptual portraits, artistic set photography, and free visual experimentation.",
+                    "sec-photos-grid": "Photos Gallery"
+                }
+            };
+
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            const langBtn = document.getElementById('language-toggle-btn');
+
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+                    translatePage(currentLanguage);
+                });
+            }
+
+            function translatePage(lang) {
+                localStorage.setItem('portfolio-lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                if (langBtn) {
+                    langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+                }
+                document.documentElement.lang = lang;
+            }
+
+            translatePage(currentLanguage);
+        });
+    </script>
+</body>
+</html>

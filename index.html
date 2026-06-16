@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H G O | Director de Arte & Animador Digital</title>
+    <meta name="description" content="Portafolio profesional de Hugo García Ortega (H G O), Director de Arte y Animador Digital.">
+    <!-- Google Fonts: Outfit (backup legibility), Courier Prime -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Red glowing spots matching the crimson theme -->
+    <div class="glow-spot spot-1"></div>
+    <div class="glow-spot spot-2"></div>
+
+    <!-- Header with Centered Brand and Navigation -->
+    <header id="main-header" class="header">
+        <div class="container header-container">
+            <div class="brand-centered">
+                <a href="#" class="logo" id="logo-link" data-i18n="logo-text">H G O <span class="logo-subtitle">| Director de Arte &amp; Animador Digital.</span></a>
+            </div>
+            <nav class="nav" id="main-navigation">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link header-nav-link" data-i18n="nav-home">Inicio</a></li>
+                    <li><a href="#reel" class="nav-link header-nav-link" data-i18n="nav-reel">Reel</a></li>
+                    <li><a href="#sobre-mi" class="nav-link header-nav-link" data-i18n="nav-about">Sobre Mí</a></li>
+                    <li><a href="#portafolio" class="nav-link header-nav-link" data-i18n="nav-portfolio">Portafolio</a></li>
+                    <li><a href="#personal" class="nav-link header-nav-link" data-i18n="nav-personal">Trabajo Personal</a></li>
+                    <li><a href="#contacto" class="nav-link header-nav-link" data-i18n="nav-contact">Contacto</a></li>
+                    <li class="nav-lang-item"><button id="language-toggle-btn" class="lang-toggle-btn">EN</button></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section (Full bleed with cover image) -->
+        <section id="inicio" class="hero-section">
+            <!-- Gradient fade at the bottom to transition to content -->
+            <div class="hero-bottom-fade"></div>
+        </section>
+
+        <!-- Infinite Brands Marquee (Transition Bar) -->
+        <section class="marquee-section">
+            <h4 class="marquee-title">Selected Brands</h4>
+            <div class="brands-marquee-container">
+                <div class="brands-marquee">
+                    <div class="marquee-content">
+                        <span>SAMSUNG</span>
+                        <span>BIMBO</span>
+                        <span>YA GANASTE</span>
+                        <span>JAFRA</span>
+                        <span>TELEVISA</span>
+                        <span>PRICE SHOES</span>
+                        <span>CONSTRURAMA</span>
+                        <span>MIDE</span>
+                        <span>QUAKER STATE</span>
+                        <span>MAK EXTINGUISHER</span>
+                        <span>WTC MEXIQUENSE</span>
+                        <!-- Repeated for seamless loop -->
+                        <span>SAMSUNG</span>
+                        <span>BIMBO</span>
+                        <span>YA GANASTE</span>
+                        <span>JAFRA</span>
+                        <span>TELEVISA</span>
+                        <span>PRICE SHOES</span>
+                        <span>CONSTRURAMA</span>
+                        <span>MIDE</span>
+                        <span>QUAKER STATE</span>
+                        <span>MAK EXTINGUISHER</span>
+                        <span>WTC MEXIQUENSE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Reel Section (Full Bleed Video) -->
+        <section id="reel" class="section reel-section">
+            <div class="container reel-header-container">
+                <h2 class="section-title" data-i18n="reel-title">\\ REEL CREATIVO //</h2>
+            </div>
+            
+            <div class="video-full-bleed">
+                <video controls preload="metadata" playsinline class="reel-video" src="https://dl.dropboxusercontent.com/scl/fi/km42ksbkhhepfxih7s39d/FInal_ES.mp4?rlkey=o2ftt7p2rhfgd7njcotehqlbl&st=ujj7ok6y&raw=1" poster="assets/thumbnnail.jpeg">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+            
+            <div class="container reel-footer-container">
+                <h3 class="reel-heading" data-i18n="reel-heading">HGO Creative Reel — Art Direction, Motion &amp; AI</h3>
+                <p class="reel-description legible-p" data-i18n="reel-desc">
+                    Un reel creativo personal que combina dirección de arte, diseño de movimiento, narrativa, producción y experimentación con IA.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Me Section (Sobre Mí) -->
+        <section id="sobre-mi" class="section about-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="about-title">\\ SOBRE MÍ //</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p class="legible-p" data-i18n="about-p1">
+                            Soy Hugo Garcia Ortega, Art Director &amp; Senior Motion Designer con más de 9 años de experiencia creando campañas digitales, contenido visual y piezas multimedia para marcas en México y Latinoamérica.
+                        </p>
+                        <p class="legible-p" data-i18n="about-p2">
+                            Mi trabajo combina dirección de arte, motion design, edición, producción audiovisual y flujos creativos con IA para convertir ideas en contenido visual de alto nivel para social media, plataformas digitales, campañas y branded content.
+                        </p>
+                        <p class="legible-p" data-i18n="about-p3">
+                            He liderado equipos creativos y colaborado con áreas de marketing, UX/UI y producto, conectando craft visual, storytelling, tecnología y objetivos de negocio.
+                        </p>
+                        <div class="about-cv-wrapper">
+                            <a href="assets/CV HGO 2026_ES.pdf" class="btn btn-outline" download data-i18n="about-cv">Descargar CV (PDF)</a>
+                        </div>
+                    </div>
+                    <div class="about-skills">
+                        <h3 class="skills-title" data-i18n="about-skills-title">Habilidades y Software</h3>
+                        <ul class="skills-list">
+                            <li class="skill-item" data-i18n="skill-1">Dirección de Arte</li>
+                            <li class="skill-item" data-i18n="skill-2">Animación 2D / 3D</li>
+                            <li class="skill-item" data-i18n="skill-3">After Effects & Premiere</li>
+                            <li class="skill-item" data-i18n="skill-4">Photoshop & Illustrator</li>
+                            <li class="skill-item" data-i18n="skill-6">IA Generativa (Runway, Midjourney)</li>
+                            <li class="skill-item" data-i18n="skill-7">Producción Audiovisual</li>
+                            <li class="skill-item" data-i18n="skill-8">Liderazgo de Equipos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section (Professional) -->
+        <section id="portafolio" class="section portfolio-section">
+            <div class="container">
+                <h2 class="section-title portfolio-main-title" data-i18n="portfolio-title">\\ PORTAFOLIO PROFESIONAL //</h2>
+                <p class="portfolio-subtitle" data-i18n="portfolio-desc">Haz clic en los lomos de los libros para expandir cada caso de estudio profesional.</p>
+                
+                <!-- Section 1: Digital Campaigns & Social Content -->
+                <h3 class="portfolio-category-title" data-i18n="portfolio-cat-digital">\\ DIGITAL CAMPAIGNS &amp; SOCIAL CONTENT //</h3>
+                <div class="bookshelf-accordion">
+                    <!-- Book 1: Samsung (Active by default in this accordion) -->
+                    <div class="book-card active" data-book="digital-samsung">
+                        <div class="book-spine">
+                            <span class="spine-num">01</span>
+                            <span class="spine-title" data-i18n="spine-samsung-title">SAMSUNG</span>
+                            <span class="spine-category" data-i18n="spine-samsung-cat">CAMPAIGN</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="samsung-loop-video" muted playsinline loop poster="assets/Samsung/KV 1_2.png" src="assets/Samsung/Samsung_Members_Stars_Social_9x16_Final.mp4"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-samsung-title">Samsung</h3>
+                                    <span class="case-meta">SAMSUNG // 2022 - 2026</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-samsung-bullet-1">Dirección de Arte y Animación Digital</li>
+                                        <li data-i18n="book-samsung-bullet-2">Optimización UX/UI y Micro-animaciones</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="samsung-projects.html" class="btn btn-primary" data-i18n="book-samsung-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2: Jafra -->
+                    <div class="book-card" data-book="digital-jafra">
+                        <div class="book-spine">
+                            <span class="spine-num">02</span>
+                            <span class="spine-title" data-i18n="spine-jafra-title">JAFRA</span>
+                            <span class="spine-category" data-i18n="spine-jafra-cat">CAMPAIGN</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="jafra-loop-video" muted playsinline loop src="assets/Jafra/Jafra|_Teaser_Always.mp4"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-jafra-title">Jafra</h3>
+                                    <span class="case-meta">JAFRA // 2023 - 2025</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-jafra-bullet-1">Dirección de Arte Digital</li>
+                                        <li data-i18n="book-jafra-bullet-2">Branding y Activación</li>
+                                        <li data-i18n="book-jafra-bullet-3">Optimización de Conversión</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="jafra-projects.html" class="btn btn-primary" data-i18n="book-jafra-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3: Ya Ganaste -->
+                    <div class="book-card" data-book="digital-yaganaste">
+                        <div class="book-spine">
+                            <span class="spine-num">03</span>
+                            <span class="spine-title" data-i18n="spine-yaganaste-title">YA GANASTE</span>
+                            <span class="spine-category" data-i18n="spine-yaganaste-cat">CAMPAIGN</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="yaganaste-digital-loop-video" muted playsinline loop src="assets/Ya Ganaste/01/Cambio de tarjetas_MX teaser_no audio_R.mp4"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-yaganaste-title">Ya Ganaste</h3>
+                                    <span class="case-meta">YA GANASTE // 2021 - 2024</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-yaganaste-bullet-1">Dirección de Arte</li>
+                                        <li data-i18n="book-yaganaste-bullet-2">Adquisición B2B</li>
+                                        <li data-i18n="book-yaganaste-bullet-3">Social Content</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="yaganaste-projects.html" class="btn btn-primary" data-i18n="book-yaganaste-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4: AI Art -->
+                    <div class="book-card" data-book="personal-ai">
+                        <div class="book-spine">
+                            <span class="spine-num">04</span>
+                            <span class="spine-title" data-i18n="spine-ai-title">GENERATIVE AI ART</span>
+                            <span class="spine-category" data-i18n="spine-ai-cat">AI ART</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="ai-loop-video" muted playsinline loop src="assets/IA/Fullcarga no aviso de deposito_R.mp4"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-ai-title">Arte Generativo e IA</h3>
+                                    <span class="case-meta">CREATIVE AI EXPERIMENTS // 2022 - PRESENTE</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-ai-bullet-1">Experimentación de IA</li>
+                                        <li data-i18n="book-ai-bullet-2">Animación Híbrida</li>
+                                        <li data-i18n="book-ai-bullet-3">Flujos Híbridos</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="ai-projects.html" class="btn btn-primary" data-i18n="book-ai-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Motion, Video Editing & Post Production -->
+                <h3 class="portfolio-category-title" data-i18n="portfolio-cat-motion">\\ MOTION, VIDEO EDITING &amp; POST PRODUCTION //</h3>
+                <div class="bookshelf-accordion">
+                    <!-- Book 1: Xanadu Medic (Active by default in this accordion) -->
+                    <div class="book-card active" data-book="motion-xanadu">
+                        <div class="book-spine">
+                            <span class="spine-num">01</span>
+                            <span class="spine-title" data-i18n="spine-xanadu-title">XANADU MEDIC</span>
+                            <span class="spine-category" data-i18n="spine-xanadu-cat">POST-PROD</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="xanadu-loop-video" muted playsinline loop src="assets/Xanadu/Xanadu Preview.mp4"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-xanadu-title">Xanadu Medic</h3>
+                                    <span class="case-meta">XANADU MEDIC // 2024 - 2025</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-xanadu-bullet-1">Edición y Postproducción</li>
+                                        <li data-i18n="book-xanadu-bullet-2">Motion Graphics Médico</li>
+                                        <li data-i18n="book-xanadu-bullet-3">Diseño de Sonido y Color</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="xanadu-projects.html" class="btn btn-primary" data-i18n="book-xanadu-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2: ISA CUP -->
+                    <div class="book-card" data-book="motion-isacup">
+                        <div class="book-spine">
+                            <span class="spine-num">02</span>
+                            <span class="spine-title" data-i18n="spine-isacup-title">ISA CUP</span>
+                            <span class="spine-category" data-i18n="spine-isacup-cat">POST-PROD</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <img class="isacup-loop-image" src="assets/ISA CUP/FOTOS/IMG_2008.jpg" alt="ISA Cup Preview">
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-isacup-title">ISA Cup</h3>
+                                    <span class="case-meta">ISA CUP // 2023</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-isacup-bullet-1">Postproducción de Eventos</li>
+                                        <li data-i18n="book-isacup-bullet-2">Motion Graphics en Pantalla</li>
+                                        <li data-i18n="book-isacup-bullet-3">Dirección Audiovisual</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="isacup-projects.html" class="btn btn-primary" data-i18n="book-isacup-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3: BIMBO -->
+                    <div class="book-card" data-book="motion-bimbo">
+                        <div class="book-spine">
+                            <span class="spine-num">03</span>
+                            <span class="spine-title" data-i18n="spine-bimbo-title">BIMBO</span>
+                            <span class="spine-category" data-i18n="spine-bimbo-cat">POST-PROD</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="bimbo-loop-video" muted playsinline loop src="https://dl.dropboxusercontent.com/scl/fi/nel6rd1fzl0s4frqqevzq/CDM_Bimbo_v3_Reducido.mp4?rlkey=4hmr2xa2a33i549vh948hsll4&st=7g04na6o&raw=1"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-bimbo-title">Bimbo</h3>
+                                    <span class="case-meta">BIMBO // 2018 - 2021</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-bimbo-bullet-1">Animación Comercial Digital</li>
+                                        <li data-i18n="book-bimbo-bullet-2">Comunicación Corporativa</li>
+                                        <li data-i18n="book-bimbo-bullet-3">Postproducción Audiovisual</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="bimbo-projects.html" class="btn btn-primary" data-i18n="book-bimbo-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4: Ya Ganaste -->
+                    <div class="book-card" data-book="motion-yaganaste">
+                        <div class="book-spine">
+                            <span class="spine-num">04</span>
+                            <span class="spine-title" data-i18n="spine-yaganaste-motion-title">YA GANASTE</span>
+                            <span class="spine-category" data-i18n="spine-yaganaste-motion-cat">POST-PROD</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="yaganaste-motion-loop-video" muted playsinline loop src="assets/Ya Ganaste/02/Bienvenida APP_MX.mp4"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-yaganaste-motion-title">Ya Ganaste</h3>
+                                    <span class="case-meta">YA GANASTE // 2021 - 2024</span>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-yaganaste-motion-bullet-1">Spots y Tutoriales</li>
+                                        <li data-i18n="book-yaganaste-motion-bullet-2">Identidad en Movimiento</li>
+                                        <li data-i18n="book-yaganaste-motion-bullet-3">Casos de Éxito</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="yaganaste-motion-projects.html" class="btn btn-primary" data-i18n="book-yaganaste-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Work Section (Trabajo Personal) -->
+        <section id="personal" class="section portfolio-section personal-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="personal-title">\\ TRABAJO PERSONAL //</h2>
+                <p class="portfolio-subtitle" data-i18n="personal-desc">Fotografía, producción visual y experimentación creativa independiente.</p>
+                
+                <h3 class="portfolio-category-title" data-i18n="portfolio-cat-personal">\\ PHOTOGRAPHY &amp; VISUAL PRODUCTION //</h3>
+                <div class="bookshelf-accordion">
+                    <!-- Book 1: Photos (Active by default) -->
+                    <div class="book-card active" data-book="personal-photo">
+                        <div class="book-spine">
+                            <span class="spine-num">01</span>
+                            <span class="spine-title" data-i18n="spine-personal-photo-title">FOTOGRAFÍA</span>
+                            <span class="spine-category" data-i18n="spine-personal-photo-cat">PHOTOS</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <img class="personal-photo-cover" src="assets/Personal/portada-fotos.jpg" alt="Portada Fotografía Personal">
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-personal-photo-title">Fotografía Personal</h3>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-personal-photo-bullet-1">Fotografía Conceptual</li>
+                                        <li data-i18n="book-personal-photo-bullet-2">Retrato Fine Art</li>
+                                        <li data-i18n="book-personal-photo-bullet-3">Dirección de Arte</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="personal-photos.html" class="btn btn-primary" data-i18n="book-personal-photo-gallery-btn">Ver Galería de Fotos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 2: Videos -->
+                    <div class="book-card" data-book="personal-video">
+                        <div class="book-spine">
+                            <span class="spine-num">02</span>
+                            <span class="spine-title" data-i18n="spine-personal-video-title">VIDEOS</span>
+                            <span class="spine-category" data-i18n="spine-personal-video-cat">VIDEOS</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="personal-video-loop" muted playsinline loop src="assets/Korn Story.mp4"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-personal-video-title">Video y Producción</h3>
+                                    <ul class="case-bullet-list">
+                                        <li data-i18n="book-personal-video-bullet-1">Cine Independiente</li>
+                                        <li data-i18n="book-personal-video-bullet-2">Videos Musicales</li>
+                                        <li data-i18n="book-personal-video-bullet-3">Edición y Documental</li>
+                                    </ul>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="personal-videos.html" class="btn btn-primary" data-i18n="book-personal-video-gallery-btn">Ver Galería de Videos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section (Contacto) -->
+        <section id="contacto" class="section contact-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="contact-title">\\ CONTACTO //</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3 data-i18n="contact-heading">¿Hacemos algo increíble juntos?</h3>
+                        <p class="legible-p" data-i18n="contact-desc">Abierto a oportunidades como Director de Arte, Senior Motion Designer, Creative Producer y perfiles de contenido visual con IA.</p>
+                        <ul class="contact-links">
+                            <li><strong>Email:</strong> <a href="mailto:hgo.gore@gmail.com">hgo.gore@gmail.com</a></li>
+                            <li><strong>Teléfono:</strong> <a href="tel:+525555087778">+52 55 5508 7778</a></li>
+                            <li><strong data-i18n="contact-location-label">Ubicación:</strong> <span data-i18n="contact-location">México, CDMX</span></li>
+                            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hugo-garcia-771004242/" target="_blank" rel="noopener">linkedin.com/in/hugo-garcia-771004242/</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="form-name" data-i18n="form-name-label">Nombre</label>
+                                <input type="text" id="form-name" required placeholder="Tu nombre" data-i18n="form-name-ph">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email" data-i18n="form-email-label">Correo Electrónico</label>
+                                <input type="email" id="form-email" required placeholder="Tu correo electrónico" data-i18n="form-email-ph">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-message" data-i18n="form-message-label">Mensaje</label>
+                                <textarea id="form-message" rows="5" required placeholder="¿En qué tipo de proyecto estás pensando?" data-i18n="form-message-ph"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="form-submit-btn" data-i18n="form-submit">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="main-footer">
+        <div class="container footer-container">
+            <p data-i18n="footer-copy">&copy; 2026 Hugo García Ortega (H G O). Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

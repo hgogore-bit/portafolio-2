@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H G O | Video y Producción Personal</title>
+    <meta name="description" content="Galería de cortometrajes, videos musicales, coberturas y producción audiovisual personal.">
+    <!-- Google Fonts: Outfit, Courier Prime -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-page {
+            background-color: #090a0d;
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .gallery-header-block {
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--ff-main);
+            color: var(--clr-text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-fast);
+            background: none;
+            border: 1px solid var(--clr-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .btn-back:hover {
+            color: var(--clr-text-main);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 12px var(--clr-primary-glow);
+            transform: translateX(-4px);
+        }
+
+        .gallery-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--clr-text-main) 30%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.15rem;
+            color: var(--clr-text-muted);
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gallery-section-title {
+            font-family: var(--ff-mono);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+            margin: 4rem 0 2rem 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--clr-primary);
+            padding-left: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background-color: var(--clr-bg-card);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--clr-primary);
+            box-shadow: 0 15px 30px rgba(185, 28, 28, 0.15);
+        }
+
+        .gallery-preview {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #030406;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gallery-preview:hover .preview-overlay {
+            opacity: 1;
+        }
+
+        .overlay-icon {
+            background-color: var(--clr-primary);
+            color: #fff;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 20px rgba(185, 28, 28, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .overlay-icon.play-icon {
+            padding-left: 4px;
+        }
+
+        .gallery-preview:hover .overlay-icon {
+            transform: scale(1);
+        }
+
+        /* Lightbox Window Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 7, 9, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content-container {
+            max-width: 90%;
+            max-height: 85%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-video {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--clr-border);
+            background-color: #000;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--clr-text-main);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            color: var(--clr-primary);
+            transform: scale(1.1);
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--clr-border);
+            color: var(--clr-text-main);
+            font-size: 2rem;
+            padding: 0.8rem 1.1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: var(--transition-fast);
+            z-index: 2010;
+            user-select: none;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-prev {
+            left: -80px;
+        }
+
+        .lightbox-next {
+            right: -80px;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background-color: var(--clr-primary);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 15px var(--clr-primary-glow);
+            color: #fff;
+        }
+
+        @media (max-width: 992px) {
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+            .lightbox-close {
+                top: -60px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="gallery-page">
+    <div class="glow-spot spot-1"></div>
+    <div class="glow-spot spot-2"></div>
+
+    <div class="container">
+        <!-- Navigation Header -->
+        <header class="gallery-nav">
+            <a href="index.html" class="btn-back" id="back-btn" data-i18n="back-btn-text">← Volver al Inicio</a>
+            <button id="language-toggle-btn" class="lang-toggle-btn">EN</button>
+        </header>
+
+        <!-- Gallery Header Details -->
+        <div class="gallery-header-block">
+            <h1 class="gallery-title" data-i18n="gallery-title">Video y Producción</h1>
+            <p class="gallery-subtitle" data-i18n="gallery-desc">Cortometrajes independientes, videos musicales, coberturas y producción visual libre.</p>
+        </div>
+
+        <!-- === SECCIÓN VIDEOS === -->
+        <h2 class="gallery-section-title" data-i18n="sec-videos-grid">Showcase de Videos</h2>
+        <div class="gallery-grid">
+            
+            <!-- Video 1: Korn Story (16:9) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Korn Story.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2: Captain Qubz (16:9) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="https://dl.dropboxusercontent.com/scl/fi/qhqu2ixy34ors0lj5lvyt/Captain-Qubz-Rawness_1.mp4?rlkey=0dee7ijmwm37f0b90rtgsvoi8&st=z6szqthi&raw=1"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Video 4: LFP 2025_DIC_Final (16:9) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Videos /LFP 2025_DIC_Final.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 5: LFP junio 2026_R (16:9) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Videos /LFP junio 2026_R.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 6: Video 4 Fascitis plantar (16:9) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Videos /Video 4 Fascitis plantar para textos.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Video 8: Video estadio toluca (16:9) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="https://dl.dropboxusercontent.com/scl/fi/oz2d075yp3efbhuzzdvi1/Video-estadio-toluca.mp4?rlkey=6qxmcqbq7z95ym6ohuwq5yvkv&st=shgdp8el&raw=1"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 9: YMB_ (16:9) -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Videos /YMB_.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Video Lightbox Window with Playlist Navigation -->
+    <div class="lightbox" id="video-lightbox">
+        <div class="lightbox-content-container">
+            <button class="lightbox-close" id="video-lightbox-close-btn">&times;</button>
+            <button class="lightbox-prev" id="video-lightbox-prev-btn">&#10094;</button>
+            <video src="" controls autoplay playsinline class="lightbox-video" id="lightbox-video"></video>
+            <button class="lightbox-next" id="video-lightbox-next-btn">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Script for Gallery Page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Hover video playback controller
+            const videoCards = document.querySelectorAll('.gallery-item');
+            
+            videoCards.forEach(card => {
+                const video = card.querySelector('video');
+                if (video) {
+                    card.addEventListener('mouseenter', () => {
+                        video.play().catch(e => {});
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        video.pause();
+                    });
+                }
+            });
+
+            // 2. Video Lightbox Controller with Playlist / Slide Show Navigation
+            const videoLightbox = document.getElementById('video-lightbox');
+            const videoLightboxVideo = document.getElementById('lightbox-video');
+            const videoCloseBtn = document.getElementById('video-lightbox-close-btn');
+            const videoPrevBtn = document.getElementById('video-lightbox-prev-btn');
+            const videoNextBtn = document.getElementById('video-lightbox-next-btn');
+            const videoElements = Array.from(document.querySelectorAll('.gallery-preview video'));
+            let currentVideoIndex = 0;
+
+            const playVideoInLightbox = (index) => {
+                if (index < 0 || index >= videoElements.length) return;
+                currentVideoIndex = index;
+                videoLightboxVideo.src = videoElements[index].src;
+                videoLightboxVideo.muted = false;
+                videoLightboxVideo.play().catch(err => {});
+            };
+
+            videoElements.forEach((video, index) => {
+                video.parentElement.addEventListener('click', () => {
+                    playVideoInLightbox(index);
+                    videoLightbox.classList.add('active');
+                });
+            });
+
+            const closeVideoLightbox = () => {
+                videoLightbox.classList.remove('active');
+                videoLightboxVideo.pause();
+                videoLightboxVideo.src = '';
+            };
+
+            const prevVideo = () => {
+                const newIndex = (currentVideoIndex - 1 + videoElements.length) % videoElements.length;
+                playVideoInLightbox(newIndex);
+            };
+
+            const nextVideo = () => {
+                const newIndex = (currentVideoIndex + 1) % videoElements.length;
+                playVideoInLightbox(newIndex);
+            };
+
+            if (videoCloseBtn) videoCloseBtn.addEventListener('click', closeVideoLightbox);
+            if (videoPrevBtn) videoPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevVideo(); });
+            if (videoNextBtn) videoNextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextVideo(); });
+
+            if (videoLightbox) {
+                videoLightbox.addEventListener('click', (e) => {
+                    if (e.target === videoLightbox) {
+                        closeVideoLightbox();
+                    }
+                });
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!videoLightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') {
+                    closeVideoLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    prevVideo();
+                } else if (e.key === 'ArrowRight') {
+                    nextVideo();
+                }
+            });
+
+            // Touch Swipe Gestures
+            let startX = 0;
+            let startY = 0;
+            if (videoLightbox) {
+                videoLightbox.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                videoLightbox.addEventListener('touchend', (e) => {
+                    const diffX = e.changedTouches[0].clientX - startX;
+                    const diffY = e.changedTouches[0].clientY - startY;
+                    if (Math.abs(diffX) > 50 && Math.abs(diffY) < 100) {
+                        if (diffX > 0) {
+                            prevVideo();
+                        } else {
+                            nextVideo();
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            // 3. Translation logic
+            const translations = {
+                es: {
+                    "back-btn-text": "← Volver al Inicio",
+                    "gallery-title": "Video y Producción",
+                    "gallery-desc": "Cortometrajes independientes, videos musicales, coberturas y producción visual libre.",
+                    "sec-videos-grid": "Showcase de Videos"
+                },
+                en: {
+                    "back-btn-text": "← Back to Home",
+                    "gallery-title": "Video & Production",
+                    "gallery-desc": "Independent short films, music videos, coverages, and free visual production.",
+                    "sec-videos-grid": "Videos Showcase"
+                }
+            };
+
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            const langBtn = document.getElementById('language-toggle-btn');
+
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+                    translatePage(currentLanguage);
+                });
+            }
+
+            function translatePage(lang) {
+                localStorage.setItem('portfolio-lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                if (langBtn) {
+                    langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+                }
+                document.documentElement.lang = lang;
+            }
+
+            translatePage(currentLanguage);
+        });
+    </script>
+</body>
+</html>

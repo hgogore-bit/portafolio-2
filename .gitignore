@@ -1,0 +1,6 @@
+.DS_Store
+backup_v1/
+*.log
+node_modules/
+dist/
+.env

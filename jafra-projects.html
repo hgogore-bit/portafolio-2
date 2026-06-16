@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H G O | Jafra Campaigns &amp; Content</title>
+    <meta name="description" content="Galería de proyectos y recursos de postproducción y dirección de arte para Jafra.">
+    <!-- Google Fonts: Outfit, Courier Prime -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styling for the Jafra gallery page */
+        .gallery-page {
+            background-color: #090a0d;
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .gallery-header-block {
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--ff-main);
+            color: var(--clr-text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-fast);
+            background: none;
+            border: 1px solid var(--clr-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .btn-back:hover {
+            color: var(--clr-text-main);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 12px var(--clr-primary-glow);
+            transform: translateX(-4px);
+        }
+
+        .gallery-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--clr-text-main) 30%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.15rem;
+            color: var(--clr-text-muted);
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Grid showing 9:16 vertical cards */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .gallery-item {
+            background-color: var(--clr-bg-card);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--clr-primary);
+            box-shadow: 0 15px 30px rgba(185, 28, 28, 0.15);
+        }
+
+        .gallery-preview {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Horizontal format for campaigns */
+            background-color: #030406;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .gallery-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Hover play icon styling */
+        .preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gallery-preview:hover .preview-overlay {
+            opacity: 1;
+        }
+
+        .overlay-icon {
+            background-color: var(--clr-primary);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4);
+            transform: scale(0.8);
+            transition: transform 0.3s;
+        }
+
+        .overlay-icon.play-icon {
+            padding-left: 4px; /* Centered visually */
+        }
+
+        .gallery-preview:hover .overlay-icon {
+            transform: scale(1);
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .item-format {
+            font-family: var(--ff-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--clr-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: var(--clr-text-muted);
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-page {
+                padding-top: 100px;
+            }
+            .gallery-title {
+                font-size: 2.2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Lightbox Window Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 7, 9, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content-container {
+            max-width: 90%;
+            max-height: 85%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-video {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--clr-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            object-fit: contain;
+            background-color: #000;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            color: var(--clr-primary);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="gallery-page">
+    <div class="glow-spot spot-1"></div>
+    <div class="glow-spot spot-2"></div>
+
+    <div class="container">
+        <!-- Navigation Header -->
+        <header class="gallery-nav">
+            <a href="index.html" class="btn-back" id="back-btn" data-i18n="back-btn-text">← Volver al Inicio</a>
+            <button id="language-toggle-btn" class="lang-toggle-btn">EN</button>
+        </header>
+
+        <!-- Gallery Header Details -->
+        <div class="gallery-header-block">
+            <h1 class="gallery-title" data-i18n="gallery-title">Jafra Campaigns</h1>
+            <p class="gallery-subtitle" data-i18n="gallery-desc">Galería de recursos audiovisuales y piezas creativas desarrolladas para las campañas digitales y de redes sociales de Jafra.</p>
+        </div>
+
+        <!-- Campaign Description Block -->
+        <div class="gallery-description-block">
+            <ul class="gallery-desc-list">
+                <li data-i18n="gallery-bullet-1"><strong>Dirección de Arte Digital:</strong> Creación de campañas integrales para redes sociales y canales digitales para lanzamientos de productos de belleza y cuidado personal.</li>
+                <li data-i18n="gallery-bullet-2"><strong>Branding y Activación:</strong> Diseño y desarrollo de estrategias visuales dinámicas para impulsar el ecosistema digital de sus consultoras de belleza.</li>
+                <li data-i18n="gallery-bullet-3"><strong>Optimización de Conversión:</strong> Optimización de recursos gráficos comerciales y A/B testing visual, logrando mejorar el CTR en pauta digital.</li>
+                <li data-i18n="gallery-bullet-4"><strong>Edición de Comerciales:</strong> Postproducción integral de reels promocionales de productos cosméticos y perfumes de alta gama.</li>
+                <li data-i18n="gallery-bullet-5"><strong>Motion Graphics de Belleza:</strong> Creación de animaciones tipográficas elegantes y efectos visuales estilizados para anuncios en plataformas sociales.</li>
+                <li data-i18n="gallery-bullet-6"><strong>Formatos Dinámicos:</strong> Optimización de flujos de renderizado rápido para la entrega multiformato en campañas publicitarias pagadas.</li>
+            </ul>
+        </div>
+
+        <!-- Media Grid -->
+        <div class="gallery-grid">
+            
+            <!-- Video 1: Delineador con Glitter -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Jafra/01_Delinador con Glitter_V9.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div>
+                        <div class="item-format">Campaign Video [MP4] - 16x9</div>
+                        <h3 class="item-title" data-i18n="jafra-item-1-title">Delineador con Glitter</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Video 4: Sombras en Stick -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Jafra/04_Sombras en Stick_V5.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div>
+                        <div class="item-format">Campaign Video [MP4] - 16x9</div>
+                        <h3 class="item-title" data-i18n="jafra-item-4-title">Sombras en Stick</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 5: Lip Plump -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Jafra/05_Lip plump_V3.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div>
+                        <div class="item-format">Campaign Video [MP4] - 16x9</div>
+                        <h3 class="item-title" data-i18n="jafra-item-5-title">Lip Plump</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 6: Mascara Colores -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Jafra/06_Mascara colores_V7.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div>
+                        <div class="item-format">Campaign Video [MP4] - 16x9</div>
+                        <h3 class="item-title" data-i18n="jafra-item-6-title">Máscara de Colores</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 7: Tratamiento pestañas y cejas -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Jafra/07_Tratamiento pestañas y cejas_V5.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div>
+                        <div class="item-format">Campaign Video [MP4] - 16x9</div>
+                        <h3 class="item-title" data-i18n="jafra-item-7-title">Tratamiento Pestañas y Cejas</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 10: Botanical -->
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/Jafra/10_Botanical_V2.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div>
+                        <div class="item-format">Campaign Video [MP4] - 16x9</div>
+                        <h3 class="item-title" data-i18n="jafra-item-10-title">Línea Botanical</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Video Lightbox Window -->
+    <div class="lightbox" id="video-lightbox">
+        <div class="lightbox-content-container">
+            <button class="lightbox-close" id="video-lightbox-close-btn">&times;</button>
+            <video src="" controls autoplay playsinline class="lightbox-video" id="lightbox-video"></video>
+        </div>
+    </div>
+
+    <!-- Script for Gallery Page (Translation and Hover Video Playback) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Hover video playback controller
+            const videoCards = document.querySelectorAll('.gallery-item');
+            
+            videoCards.forEach(card => {
+                const video = card.querySelector('video');
+                if (video) {
+                    card.addEventListener('mouseenter', () => {
+                        video.play().catch(e => {});
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        video.pause();
+                    });
+                }
+            });
+
+            // 2. Video Lightbox Controller
+            const lightbox = document.getElementById('video-lightbox');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            const closeBtn = document.getElementById('video-lightbox-close-btn');
+            const videoPreviews = document.querySelectorAll('.gallery-preview');
+
+            videoPreviews.forEach(preview => {
+                preview.addEventListener('click', () => {
+                    const video = preview.querySelector('video');
+                    if (video) {
+                        lightboxVideo.src = video.src;
+                        lightbox.classList.add('active');
+                        // Play the video with sound in lightbox
+                        lightboxVideo.muted = false;
+                        lightboxVideo.play().catch(err => {});
+                    }
+                });
+            });
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                lightboxVideo.pause();
+                lightboxVideo.src = '';
+            };
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeLightbox);
+            }
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
+
+            // Keyboard ESC support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            // 3. Translation logic synced with main portfolio page via localStorage
+            const translations = {
+                es: {
+                    "back-btn-text": "← Volver al Inicio",
+                    "gallery-title": "Jafra Campaigns",
+                    "gallery-desc": "Galería de recursos audiovisuales y piezas creativas desarrolladas para las campañas digitales y de redes sociales de Jafra.",
+                    "gallery-bullet-1": "<strong>Dirección de Arte Digital:</strong> Creación de campañas integrales para redes sociales y canales digitales para lanzamientos de productos de belleza y cuidado personal.",
+                    "gallery-bullet-2": "<strong>Branding y Activación:</strong> Diseño y desarrollo de estrategias visuales dinámicas para impulsar el ecosistema digital de sus consultoras de belleza.",
+                    "gallery-bullet-3": "<strong>Optimización de Conversión:</strong> Optimización de recursos gráficos comerciales y A/B testing visual, logrando mejorar el CTR en pauta digital.",
+                    "gallery-bullet-4": "<strong>Edición de Comerciales:</strong> Postproducción integral de reels promocionales de productos cosméticos y perfumes de alta gama.",
+                    "gallery-bullet-5": "<strong>Motion Graphics de Belleza:</strong> Creación de animaciones tipográficas elegantes y efectos visuales estilizados para anuncios en plataformas sociales.",
+                    "gallery-bullet-6": "<strong>Formatos Dinámicos:</strong> Optimización de flujos de renderizado rápido para la entrega multiformato en campañas publicitarias pagadas.",
+                    
+                    "jafra-item-1-title": "Delineador con Glitter",
+                    "jafra-item-1-desc": "Campaña de video dinámico enfocada en el lanzamiento del nuevo delineador brillante.",
+                    
+                    "jafra-item-2-title": "Efecto Pecas",
+                    "jafra-item-2-desc": "Video promocional para redes sociales que enseña a realizar un maquillaje de pecas naturales.",
+                    
+                    "jafra-item-3-title": "Smart Foundation",
+                    "jafra-item-3-desc": "Spot publicitario enfocado en los beneficios inteligentes e hidratación de la base líquida.",
+                    
+                    "jafra-item-4-title": "Sombras en Stick",
+                    "jafra-item-4-desc": "Video tutorial ágil demostrando la aplicación rápida y duradera de las sombras en barra.",
+                    
+                    "jafra-item-5-title": "Lip Plump",
+                    "jafra-item-5-desc": "Edición visual con alto dinamismo para la presentación de labiales de efecto volumen.",
+                    
+                    "jafra-item-6-title": "Máscara de Colores",
+                    "jafra-item-6-desc": "Campaña juvenil enfocada en la variedad de tonos y colores intensos para pestañas.",
+                    
+                    "jafra-item-7-title": "Tratamiento Pestañas y Cejas",
+                    "jafra-item-7-desc": "Presentación detallada del tratamiento fortalecedor y protector de pestañas y cejas.",
+                    
+                    "jafra-item-8-title": "Lip Scrub",
+                    "jafra-item-8-desc": "Contenido publicitario enfocado en el exfoliante de labios y la rutina de preparación de piel.",
+                    
+                    "jafra-item-9-title": "Línea Niñas",
+                    "jafra-item-9-desc": "Spot animado y colorido desarrollado para el lanzamiento de la línea de fragancias infantiles.",
+                    
+                    "jafra-item-10-title": "Línea Botanical",
+                    "jafra-item-10-desc": "Edición y dirección de arte orgánica para la pauta del set botánico de cuidado cutáneo."
+                },
+                en: {
+                    "back-btn-text": "← Back to Home",
+                    "gallery-title": "Jafra Campaigns",
+                    "gallery-desc": "Gallery of dynamic audiovisual assets and creative media developed for Jafra's digital and social media campaigns.",
+                    "gallery-bullet-1": "<strong>Digital Art Direction:</strong> Creation of comprehensive campaigns for social media and digital channels for beauty and personal care product launches.",
+                    "gallery-bullet-2": "<strong>Branding & Activation:</strong> Design and development of dynamic visual strategies to boost the digital ecosystem for their beauty consultants.",
+                    "gallery-bullet-3": "<strong>Conversion Optimization:</strong> Optimization of commercial graphic resources and visual A/B testing, successfully improving CTR in digital advertising.",
+                    "gallery-bullet-4": "<strong>Commercial Editing:</strong> Comprehensive post-production of promotional reels for high-end cosmetic and perfume products.",
+                    "gallery-bullet-5": "<strong>Beauty Motion Graphics:</strong> Creation of elegant typographic animations and stylized visual effects for ads on social platforms.",
+                    "gallery-bullet-6": "<strong>Dynamic Formats:</strong> Optimization of fast rendering workflows for multi-format delivery in paid advertising campaigns.",
+                    
+                    "jafra-item-1-title": "Glitter Eyeliner",
+                    "jafra-item-1-desc": "Dynamic video campaign focused on the product launch of the new sparkling eyeliner.",
+                    
+                    "jafra-item-2-title": "Faux Freckles",
+                    "jafra-item-2-desc": "Promotional tutorial video teaching how to achieve natural-looking faux freckles makeup.",
+                    
+                    "jafra-item-3-title": "Smart Foundation",
+                    "jafra-item-3-desc": "Commercial spot highlighting the smart benefits and hydration formula of the liquid base.",
+                    
+                    "jafra-item-4-title": "Eye Shadows Stick",
+                    "jafra-item-4-desc": "Snappy tutorial video showing the quick, smudge-proof application of the shadow sticks.",
+                    
+                    "jafra-item-5-title": "Lip Plump",
+                    "jafra-item-5-desc": "High-energy editing showcasing plumping lip glosses and intense visual finishes.",
+                    
+                    "jafra-item-6-title": "Colored Mascara",
+                    "jafra-item-6-desc": "Youthful campaign focusing on the colored mascara shades and high contrast lash looks.",
+                    
+                    "jafra-item-7-title": "Lashes & Brows Treatment",
+                    "jafra-item-7-desc": "Detailed presentation showing the protective and strengthening lash and brow treatment gel.",
+                    
+                    "jafra-item-8-title": "Lip Scrub",
+                    "jafra-item-8-desc": "Commercial content spotlighting the sugar lip scrub and lip preparation routine.",
+                    
+                    "jafra-item-9-title": "Kids Fragrance Line",
+                    "jafra-item-9-desc": "Colorful, playful animated spot created for the official release of the kids perfume line.",
+                    
+                    "jafra-item-10-title": "Botanical Skin Set",
+                    "jafra-item-10-desc": "Organic art direction and video editing for the promotion of the botanical skincare line."
+                }
+            };
+
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            const langBtn = document.getElementById('language-toggle-btn');
+
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+                    translatePage(currentLanguage);
+                });
+            }
+
+            function translatePage(lang) {
+                localStorage.setItem('portfolio-lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                if (langBtn) {
+                    langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+                }
+                document.documentElement.lang = lang;
+            }
+
+            // Load initial translation
+            translatePage(currentLanguage);
+        });
+    </script>
+</body>
+</html>

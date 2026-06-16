@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H G O | ISA Cup Campaigns</title>
+    <meta name="description" content="Galería de proyectos y cobertura audiovisual de ISA Cup.">
+    <!-- Google Fonts: Outfit, Courier Prime -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styling for the gallery sub-page */
+        .gallery-page {
+            background-color: #090a0d;
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .gallery-header-block {
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--ff-main);
+            color: var(--clr-text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-fast);
+            background: none;
+            border: 1px solid var(--clr-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .btn-back:hover {
+            color: var(--clr-text-main);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 12px var(--clr-primary-glow);
+            transform: translateX(-4px);
+        }
+
+        .gallery-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--clr-text-main) 30%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.15rem;
+            color: var(--clr-text-muted);
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Category Subheadings */
+        .gallery-section-title {
+            font-family: var(--ff-mono);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+            margin: 4rem 0 2rem 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--clr-primary);
+            padding-left: 1rem;
+        }
+
+        /* Responsive CSS Grid for Showcase items */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background-color: var(--clr-bg-card);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--clr-primary);
+            box-shadow: 0 15px 30px rgba(185, 28, 28, 0.15);
+        }
+
+        .gallery-preview {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #040507;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        /* For photo elements, remove border-bottom since they don't have descriptions underneath */
+        .gallery-item.photo-only .gallery-preview {
+            border-bottom: none;
+        }
+
+        .gallery-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.3s;
+        }
+
+        .gallery-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-preview img {
+            transform: scale(1.05);
+        }
+
+        /* Hover indicator for playing videos and lightboxing images */
+        .preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gallery-preview:hover .preview-overlay {
+            opacity: 1;
+        }
+
+        .overlay-icon {
+            background-color: var(--clr-primary);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4);
+            transform: scale(0.8);
+            transition: transform 0.3s;
+        }
+
+        .overlay-icon.play-icon {
+            padding-left: 4px;
+        }
+
+        .gallery-preview:hover .overlay-icon {
+            transform: scale(1);
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .item-format {
+            font-family: var(--ff-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--clr-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: var(--clr-text-muted);
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+
+        /* Lightbox Window Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 7, 9, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content-container {
+            max-width: 90%;
+            max-height: 85%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-img,
+        .lightbox-video {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--clr-border);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--clr-text-main);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            color: var(--clr-primary);
+            transform: scale(1.1);
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--clr-border);
+            color: var(--clr-text-main);
+            font-size: 2rem;
+            padding: 0.8rem 1.1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: var(--transition-fast);
+            z-index: 2010;
+            user-select: none;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-prev {
+            left: -80px;
+        }
+
+        .lightbox-next {
+            right: -80px;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background-color: var(--clr-primary);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 15px var(--clr-primary-glow);
+            color: #fff;
+        }
+
+        @media (max-width: 992px) {
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+            .lightbox-close {
+                top: -60px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="gallery-page">
+    <div class="glow-spot spot-1"></div>
+    <div class="glow-spot spot-2"></div>
+
+    <div class="container">
+        <!-- Navigation Header -->
+        <header class="gallery-nav">
+            <a href="index.html" class="btn-back" id="back-btn" data-i18n="back-btn-text">← Volver al Inicio</a>
+            <button id="language-toggle-btn" class="lang-toggle-btn">EN</button>
+        </header>
+
+        <!-- Gallery Header Details -->
+        <div class="gallery-header-block">
+            <h1 class="gallery-title" data-i18n="gallery-title">Campañas ISA Cup</h1>
+            <p class="gallery-subtitle" data-i18n="gallery-desc">Galería de recursos audiovisuales y cobertura fotográfica del campeonato de automovilismo ISA Cup.</p>
+        </div>
+
+        <!-- Campaign Description Block -->
+        <div class="gallery-description-block">
+            <ul class="gallery-desc-list">
+                <li data-i18n="gallery-bullet-1"><strong>Postproducción de Eventos:</strong> Edición y montaje dinámico de resúmenes de carreras de automovilismo y competencias en vivo.</li>
+                <li data-i18n="gallery-bullet-2"><strong>Motion Graphics en Pantalla:</strong> Diseño de transiciones animadas y overlays gráficos en tiempo real (marcadores, posiciones, títulos de competidores).</li>
+                <li data-i18n="gallery-bullet-3"><strong>Dirección Audiovisual:</strong> Producción y postproducción de piezas promocionales integrando marcas de patrocinadores en las coberturas oficiales.</li>
+            </ul>
+        </div>
+
+        <!-- === SECCIÓN VIDEO OFICIAL === -->
+        <h2 class="gallery-section-title" data-i18n="sec-official-video">Video Oficial</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-preview">
+                    <video muted playsinline loop src="assets/ISA CUP/Video/video isa cup 2026_Final.mp4"></video>
+                    <div class="preview-overlay">
+                        <div class="overlay-icon play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div>
+                        <div class="item-format">Video [MP4] - 16x9</div>
+                        <h3 class="item-title" data-i18n="item-video-title">Video Oficial ISA Cup</h3>
+                        <p class="item-desc" data-i18n="item-video-desc">Resumen dinámico del evento y postproducción oficial de las competencias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === SECCIÓN GALERÍA DE FOTOS === -->
+        <h2 class="gallery-section-title" data-i18n="sec-photo-gallery">Galería de Fotos</h2>
+        <div class="gallery-grid">
+            
+            <!-- Foto 1 (Cover / IMG_2008) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_2008.jpg" alt="ISA Cup Event Photo - IMG_2008">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 2 (IMG_0354) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_0354.jpg" alt="ISA Cup Event Photo - IMG_0354">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 3 (IMG_0533) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_0533.jpg" alt="ISA Cup Event Photo - IMG_0533">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 4 (IMG_0603) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_0603.jpg" alt="ISA Cup Event Photo - IMG_0603">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 5 (IMG_0683) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_0683.jpg" alt="ISA Cup Event Photo - IMG_0683">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 6 (IMG_1034) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1034.jpg" alt="ISA Cup Event Photo - IMG_1034">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 7 (IMG_1598) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1598.jpg" alt="ISA Cup Event Photo - IMG_1598">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 8 (IMG_1620) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1620.jpg" alt="ISA Cup Event Photo - IMG_1620">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 9 (IMG_1688) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1688.jpg" alt="ISA Cup Event Photo - IMG_1688">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 10 (IMG_1721) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1721.jpg" alt="ISA Cup Event Photo - IMG_1721">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 11 (IMG_1822) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1822.jpg" alt="ISA Cup Event Photo - IMG_1822">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 12 (IMG_1911) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1911.jpg" alt="ISA Cup Event Photo - IMG_1911">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 13 (IMG_1986) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_1986.jpg" alt="ISA Cup Event Photo - IMG_1986">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 14 (IMG_2082) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_2082.jpg" alt="ISA Cup Event Photo - IMG_2082">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 15 (IMG_2264) -->
+            <div class="gallery-item photo-only">
+                <div class="gallery-preview">
+                    <img src="assets/ISA CUP/FOTOS/IMG_2264.jpg" alt="ISA Cup Event Photo - IMG_2264">
+                    <div class="preview-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Image Lightbox Window -->
+    <div class="lightbox" id="image-lightbox">
+        <div class="lightbox-content-container">
+            <button class="lightbox-close" id="lightbox-close-btn">&times;</button>
+            <button class="lightbox-prev" id="lightbox-prev-btn">&#10094;</button>
+            <img src="" alt="Fullscreen Preview" class="lightbox-img" id="lightbox-img">
+            <button class="lightbox-next" id="lightbox-next-btn">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Video Lightbox Window -->
+    <div class="lightbox" id="video-lightbox">
+        <div class="lightbox-content-container">
+            <button class="lightbox-close" id="video-lightbox-close-btn">&times;</button>
+            <video src="" controls autoplay playsinline class="lightbox-video" id="lightbox-video"></video>
+        </div>
+    </div>
+
+    <!-- Script for Gallery Page (Translation, Hover Video Playback, and Lightbox) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Play/Pause loop video on hover
+            const videos = document.querySelectorAll('.gallery-preview video');
+            videos.forEach(video => {
+                const preview = video.closest('.gallery-preview');
+                if (preview) {
+                    preview.addEventListener('mouseenter', () => {
+                        video.play().catch(err => {});
+                    });
+                    preview.addEventListener('mouseleave', () => {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+            });
+
+            // 2. Lightbox controller for image expansions with slide show navigation
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('lightbox-close-btn');
+            const prevBtn = document.getElementById('lightbox-prev-btn');
+            const nextBtn = document.getElementById('lightbox-next-btn');
+
+            // Select all photo elements in order
+            const imageElements = Array.from(document.querySelectorAll('.gallery-item.photo-only .gallery-preview img'));
+            let currentImgIndex = 0;
+
+            const showImage = (index) => {
+                if (index < 0 || index >= imageElements.length) return;
+                currentImgIndex = index;
+                lightboxImg.src = imageElements[index].src;
+                lightboxImg.alt = imageElements[index].alt || 'Fullscreen Preview';
+            };
+
+            imageElements.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    showImage(index);
+                    lightbox.classList.add('active');
+                });
+            });
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            };
+
+            const prevImage = () => {
+                const newIndex = (currentImgIndex - 1 + imageElements.length) % imageElements.length;
+                showImage(newIndex);
+            };
+
+            const nextImage = () => {
+                const newIndex = (currentImgIndex + 1) % imageElements.length;
+                showImage(newIndex);
+            };
+
+            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
+
+            // Keyboard navigation (Escape, Left Arrow, Right Arrow)
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                }
+            });
+
+            // Touch Swipe Gestures for Mobile
+            let startX = 0;
+            let startY = 0;
+            if (lightbox) {
+                lightbox.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                lightbox.addEventListener('touchend', (e) => {
+                    const diffX = e.changedTouches[0].clientX - startX;
+                    const diffY = e.changedTouches[0].clientY - startY;
+                    // Detect horizontal swipe
+                    if (Math.abs(diffX) > 50 && Math.abs(diffY) < 100) {
+                        if (diffX > 0) {
+                            prevImage(); // Swipe Right -> Prev
+                        } else {
+                            nextImage(); // Swipe Left -> Next
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            // 2.5. Video Lightbox Controller
+            const videoLightbox = document.getElementById('video-lightbox');
+            const videoLightboxVideo = document.getElementById('lightbox-video');
+            const videoCloseBtn = document.getElementById('video-lightbox-close-btn');
+
+            document.querySelectorAll('.gallery-preview video').forEach(video => {
+                video.addEventListener('click', () => {
+                    videoLightboxVideo.src = video.src;
+                    videoLightbox.classList.add('active');
+                    videoLightboxVideo.muted = false;
+                    videoLightboxVideo.play().catch(err => {});
+                });
+            });
+
+            const closeVideoLightbox = () => {
+                videoLightbox.classList.remove('active');
+                videoLightboxVideo.pause();
+                videoLightboxVideo.src = '';
+            };
+
+            if (videoCloseBtn) {
+                videoCloseBtn.addEventListener('click', closeVideoLightbox);
+            }
+            if (videoLightbox) {
+                videoLightbox.addEventListener('click', (e) => {
+                    if (e.target === videoLightbox) {
+                        closeVideoLightbox();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && videoLightbox.classList.contains('active')) {
+                    closeVideoLightbox();
+                }
+            });
+
+            // 3. Translations Sorter
+            const translations = {
+                es: {
+                    "back-btn-text": "← Volver al Inicio",
+                    "gallery-title": "Campañas ISA Cup",
+                    "gallery-desc": "Galería de recursos audiovisuales y cobertura fotográfica del campeonato de automovilismo ISA Cup.",
+                    "gallery-bullet-1": "<strong>Postproducción de Eventos:</strong> Edición y montaje dinámico de resúmenes de carreras de automovilismo y competencias en vivo.",
+                    "gallery-bullet-2": "<strong>Motion Graphics en Pantalla:</strong> Diseño de transiciones animadas y overlays gráficos en tiempo real (marcadores, posiciones, títulos de competidores).",
+                    "gallery-bullet-3": "<strong>Dirección Audiovisual:</strong> Producción y postproducción de piezas promocionales integrando marcas de patrocinadores en las coberturas oficiales.",
+                    
+                    "sec-official-video": "Video Oficial",
+                    "sec-photo-gallery": "Galería de Fotos",
+                    "item-video-title": "Video Oficial ISA Cup",
+                    "item-video-desc": "Resumen dinámico del evento y postproducción oficial de las competencias."
+                },
+                en: {
+                    "back-btn-text": "← Back to Home",
+                    "gallery-title": "ISA Cup Campaigns",
+                    "gallery-desc": "Gallery of audiovisual assets and photographic coverage of the ISA Cup motorsport championship.",
+                    "gallery-bullet-1": "<strong>Event Post-production:</strong> Editing and dynamic assembly of summaries of motorsport races and live competitions.",
+                    "gallery-bullet-2": "<strong>On-screen Motion Graphics:</strong> Design of animated transitions and real-time graphic overlays (scoreboards, standings, competitor names).",
+                    "gallery-bullet-3": "<strong>Audiovisual Direction:</strong> Production and post-production of promotional items integrating sponsor brands in official coverages.",
+                    
+                    "sec-official-video": "Official Video",
+                    "sec-photo-gallery": "Photo Gallery",
+                    "item-video-title": "Official ISA Cup Video",
+                    "item-video-desc": "Dynamic event summary and official post-production of the races."
+                }
+            };
+
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            const langBtn = document.getElementById('language-toggle-btn');
+
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+                    translatePage(currentLanguage);
+                });
+            }
+
+            function translatePage(lang) {
+                localStorage.setItem('portfolio-lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                if (langBtn) {
+                    langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+                }
+                document.documentElement.lang = lang;
+            }
+
+            // Load initial translation
+            translatePage(currentLanguage);
+        });
+    </script>
+</body>
+</html>

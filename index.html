@@ -246,10 +246,33 @@
                 <!-- Section 2: Motion, Video Editing & Post Production -->
                 <h3 class="portfolio-category-title" data-i18n="portfolio-cat-motion">MOTION, VIDEO EDITING &amp; POST PRODUCTION</h3>
                 <div class="bookshelf-accordion">
-                    <!-- Book 1: Xanadu Medic (Active by default in this accordion) -->
-                    <div class="book-card active" data-book="motion-xanadu">
+                    <!-- Book 1: BIMBO (Active by default in this accordion) -->
+                    <div class="book-card active" data-book="motion-bimbo">
                         <div class="book-spine">
                             <span class="spine-num">01</span>
+                            <span class="spine-title" data-i18n="spine-bimbo-title">BIMBO</span>
+                            <span class="spine-category" data-i18n="spine-bimbo-cat">POST-PROD</span>
+                        </div>
+                        <div class="book-details">
+                            <div class="book-details-inner">
+                                <div class="book-media">
+                                    <video class="bimbo-loop-video" muted playsinline loop src="https://dl.dropboxusercontent.com/scl/fi/nel6rd1fzl0s4frqqevzq/CDM_Bimbo_v3_Reducido.mp4?rlkey=4hmr2xa2a33i549vh948hsll4&st=7g04na6o&raw=1"></video>
+                                </div>
+                                <div class="book-case-study">
+                                    <h3 class="case-heading" data-i18n="book-bimbo-title">Bimbo</h3>
+                                    <p class="case-description" data-i18n="book-bimbo-desc">Videos corporativos, animación comercial y motion graphics para comunicación institucional de Grupo Bimbo.</p>
+                                    <div class="case-gallery-btn-wrapper">
+                                        <a href="bimbo-projects.html" class="btn btn-primary" data-i18n="book-bimbo-gallery-btn">Ver Galería de Proyectos</a>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 2: Xanadu Medic -->
+                    <div class="book-card" data-book="motion-xanadu">
+                        <div class="book-spine">
+                            <span class="spine-num">02</span>
                             <span class="spine-title" data-i18n="spine-xanadu-title">XANADU MEDIC</span>
                             <span class="spine-category" data-i18n="spine-xanadu-cat">POST-PROD</span>
                         </div>
@@ -269,10 +292,10 @@
                         </div>
                     </div>
                     
-                    <!-- Book 2: ISA CUP -->
+                    <!-- Book 3: ISA CUP -->
                     <div class="book-card" data-book="motion-isacup">
                         <div class="book-spine">
-                            <span class="spine-num">02</span>
+                            <span class="spine-num">03</span>
                             <span class="spine-title" data-i18n="spine-isacup-title">ISA CUP</span>
                             <span class="spine-category" data-i18n="spine-isacup-cat">POST-PROD</span>
                         </div>
@@ -286,29 +309,6 @@
                                     <p class="case-description" data-i18n="book-isacup-desc">Cobertura de automovilismo, edición de resúmenes, fotografía de evento y contenido deportivo para canales digitales.</p>
                                     <div class="case-gallery-btn-wrapper">
                                         <a href="isacup-projects.html" class="btn btn-primary" data-i18n="book-isacup-gallery-btn">Ver Galería de Proyectos</a>
-                                    </div>
-                                </div>
-                                </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Book 3: BIMBO -->
-                    <div class="book-card" data-book="motion-bimbo">
-                        <div class="book-spine">
-                            <span class="spine-num">03</span>
-                            <span class="spine-title" data-i18n="spine-bimbo-title">BIMBO</span>
-                            <span class="spine-category" data-i18n="spine-bimbo-cat">POST-PROD</span>
-                        </div>
-                        <div class="book-details">
-                            <div class="book-details-inner">
-                                <div class="book-media">
-                                    <video class="bimbo-loop-video" muted playsinline loop src="https://dl.dropboxusercontent.com/scl/fi/nel6rd1fzl0s4frqqevzq/CDM_Bimbo_v3_Reducido.mp4?rlkey=4hmr2xa2a33i549vh948hsll4&st=7g04na6o&raw=1"></video>
-                                </div>
-                                <div class="book-case-study">
-                                    <h3 class="case-heading" data-i18n="book-bimbo-title">Bimbo</h3>
-                                    <p class="case-description" data-i18n="book-bimbo-desc">Videos corporativos, animación comercial y motion graphics para comunicación institucional de Grupo Bimbo.</p>
-                                    <div class="case-gallery-btn-wrapper">
-                                        <a href="bimbo-projects.html" class="btn btn-primary" data-i18n="book-bimbo-gallery-btn">Ver Galería de Proyectos</a>
                                     </div>
                                 </div>
                                 </div>
@@ -370,18 +370,18 @@
                         </ul>
                     </div>
                     <div class="contact-form-wrapper">
-                        <form id="contact-form" class="contact-form">
+                        <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="POST">
                             <div class="form-group">
                                 <label for="form-name" data-i18n="form-name-label">Nombre</label>
-                                <input type="text" id="form-name" required placeholder="Tu nombre" data-i18n="form-name-ph">
+                                <input type="text" id="form-name" name="name" required placeholder="Tu nombre" data-i18n="form-name-ph">
                             </div>
                             <div class="form-group">
                                 <label for="form-email" data-i18n="form-email-label">Correo Electrónico</label>
-                                <input type="email" id="form-email" required placeholder="Tu correo electrónico" data-i18n="form-email-ph">
+                                <input type="email" id="form-email" name="email" required placeholder="Tu correo electrónico" data-i18n="form-email-ph">
                             </div>
                             <div class="form-group">
                                 <label for="form-message" data-i18n="form-message-label">Mensaje</label>
-                                <textarea id="form-message" rows="5" required placeholder="¿En qué tipo de proyecto estás pensando?" data-i18n="form-message-ph"></textarea>
+                                <textarea id="form-message" name="message" rows="5" required placeholder="¿En qué tipo de proyecto estás pensando?" data-i18n="form-message-ph"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary" id="form-submit-btn" data-i18n="form-submit">Enviar Mensaje</button>
                         </form>

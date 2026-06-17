@@ -801,12 +801,13 @@ body {
 }
 
 .case-gallery-btn-wrapper .btn {
-    display: flex;
-    width: 100%;
+    display: inline-flex;
+    width: fit-content;
+    min-width: 170px;
     text-align: center;
     justify-content: center;
-    padding: 1.1rem 2rem;
-    font-size: 1.05rem;
+    padding: 0.65rem 1.4rem;
+    font-size: 0.85rem;
     border-radius: var(--radius-sm);
     text-transform: none; /* Maintain case as defined */
 }
@@ -814,17 +815,36 @@ body {
 .case-gallery-btn-wrapper.double-btn {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .case-gallery-btn-wrapper.double-btn .btn {
-    flex: 1;
+    flex: none;
+    width: fit-content;
     margin-top: 0;
 }
 
 @media (max-width: 768px) {
+    .case-gallery-btn-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .case-gallery-btn-wrapper .btn {
+        width: 100%;
+        max-width: 280px;
+    }
     .case-gallery-btn-wrapper.double-btn {
         flex-direction: column;
+        align-items: center;
+        width: 100%;
         gap: 0.8rem;
+    }
+    .case-gallery-btn-wrapper.double-btn .btn {
+        width: 100%;
+        max-width: 280px;
+        margin-top: 0;
     }
 }
 

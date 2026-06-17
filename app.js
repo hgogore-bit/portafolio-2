@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Contact Form Submission Logic (Bilingual-aware)
+    // 3. Contact Form Submission Logic (Bilingual-aware & Formspree integrated)
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -58,23 +58,59 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = document.getElementById('form-submit-btn');
             const originalText = submitBtn.textContent;
             
+            const formAction = contactForm.getAttribute('action');
+            // Check if endpoint is not configured
+            if (!formAction || formAction.includes('YOUR_FORMSPREE_ID_HERE')) {
+                const warnMsg = currentLanguage === 'es' 
+                    ? 'Por favor, configura tu ID de Formspree en index.html para que los mensajes te lleguen a tu correo.' 
+                    : 'Please configure your Formspree ID in index.html so you can receive email messages.';
+                alert(warnMsg);
+                return;
+            }
+            
             const sendingText = currentLanguage === 'es' ? 'Enviando...' : 'Sending...';
             const sentText = currentLanguage === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
+            const errorText = currentLanguage === 'es' ? 'Error al enviar' : 'Error sending';
             
             submitBtn.textContent = sendingText;
             submitBtn.disabled = true;
             
-            setTimeout(() => {
-                submitBtn.textContent = sentText;
-                submitBtn.style.backgroundColor = 'var(--clr-accent)';
-                contactForm.reset();
-                
+            // Gather form data
+            const data = {
+                name: document.getElementById('form-name').value,
+                email: document.getElementById('form-email').value,
+                message: document.getElementById('form-message').value
+            };
+            
+            fetch(formAction, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    submitBtn.textContent = sentText;
+                    submitBtn.style.backgroundColor = 'var(--clr-accent)';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Formspree response error');
+                }
+            })
+            .catch(error => {
+                console.error('Submission error:', error);
+                submitBtn.textContent = errorText;
+                submitBtn.style.backgroundColor = '#b91c1c'; // visual error red
+            })
+            .finally(() => {
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
                     submitBtn.style.backgroundColor = '';
                     submitBtn.disabled = false;
                 }, 3000);
-            }, 1500);
+            });
         });
     }
 

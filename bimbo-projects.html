@@ -270,10 +270,6 @@
             .gallery-title {
                 font-size: 2.2rem;
             }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
         }
     </style>
 </head>
@@ -372,6 +368,17 @@
                 }
             });
 
+            // Seek videos to 1 second to show a preview thumbnail (prevents black frames)
+            const previewVideos = document.querySelectorAll('.gallery-preview video');
+            previewVideos.forEach(video => {
+                video.preload = "metadata";
+                video.addEventListener('loadeddata', () => {
+                    if (video.currentTime === 0) {
+                        video.currentTime = 1.0;
+                    }
+                });
+            });
+
             // 2. Video Lightbox Controller
             const lightbox = document.getElementById('video-lightbox');
             const lightboxVideo = document.getElementById('lightbox-video');
@@ -443,7 +450,7 @@
                 }
             };
 
-            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'en';
             const langBtn = document.getElementById('language-toggle-btn');
 
             if (langBtn) {

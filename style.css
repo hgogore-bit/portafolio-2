@@ -811,6 +811,23 @@ body {
     text-transform: none; /* Maintain case as defined */
 }
 
+.case-gallery-btn-wrapper.double-btn {
+    display: flex;
+    gap: 1rem;
+}
+
+.case-gallery-btn-wrapper.double-btn .btn {
+    flex: 1;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .case-gallery-btn-wrapper.double-btn {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}
+
 .media-placeholder {
     width: 100%;
     height: 100%;
@@ -880,6 +897,14 @@ body {
     text-transform: uppercase;
 }
 
+.case-description {
+    font-size: 1.05rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+    margin-top: -0.4rem;
+    margin-bottom: 1.5rem;
+}
+
 .case-meta {
     display: none; /* Hide date tags and brand repetition in book cards as requested */
 }
@@ -941,6 +966,16 @@ body {
     box-shadow: var(--shadow-premium);
 }
 
+.gallery-role-line {
+    font-family: var(--ff-main);
+    font-size: 1.1rem;
+    color: var(--clr-text-main);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--clr-border);
+    text-align: center;
+}
+
 .gallery-desc-list {
     list-style: none;
     padding: 0;
@@ -993,7 +1028,8 @@ body {
     line-height: 1.6;
 }
 
-.about-cv-wrapper {
+.about-cv-wrapper,
+.contact-cv-wrapper {
     margin-top: 2rem;
 }
 
@@ -1227,6 +1263,11 @@ body {
     .book-card.active {
         flex: none;
         height: auto;
+    }
+
+    .book-details {
+        height: auto !important;
+        overflow: visible !important;
     }
 
     .book-spine {

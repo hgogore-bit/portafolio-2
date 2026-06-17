@@ -358,10 +358,6 @@
             .gallery-title {
                 font-size: 2.2rem;
             }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
         }
     </style>
 </head>
@@ -401,7 +397,7 @@
             <!-- Video: Stars Social 9x16 (Vertical) -->
             <div class="gallery-item vertical">
                 <div class="gallery-preview">
-                    <video muted playsinline loop poster="assets/Samsung/KV 1_2.png" src="assets/Samsung/Samsung_Members_Stars_Social_9x16_Final.mp4"></video>
+                    <video autoplay muted playsinline loop preload="auto" poster="assets/Samsung/KV 1_2.png" src="assets/Samsung/Samsung_Members_Stars_Social_9x16_Final.mp4"></video>
                     <div class="preview-overlay">
                         <div class="overlay-icon play-icon">▶</div>
                     </div>
@@ -418,7 +414,7 @@
             <!-- Video: Xcaret 9-16 (Vertical) -->
             <div class="gallery-item vertical">
                 <div class="gallery-preview">
-                    <video muted playsinline loop poster="assets/Samsung/XCARET NEW.jpg" src="assets/Samsung/Xcaret 9-16_4.mp4"></video>
+                    <video autoplay muted playsinline loop preload="auto" poster="assets/Samsung/XCARET NEW.jpg" src="assets/Samsung/Xcaret 9-16_4.mp4"></video>
                     <div class="preview-overlay">
                         <div class="overlay-icon play-icon">▶</div>
                     </div>
@@ -566,27 +562,8 @@
                 <div class="gallery-info">
                     <div>
                         <div class="item-format">Image [JPG] - Newsletter</div>
-                        <h3 class="item-title" data-i18n="item-email-title">Diseño Newsletter EDM</h3>
-                        <p class="item-desc" data-i18n="item-email-desc">Estructura y diseño gráfico final para pauta publicitaria vía correo electrónico directo de fidelización.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- === ARCHIVO PSD === -->
-
-            <!-- PSD Project File Asset -->
-            <div class="gallery-item">
-                <div class="gallery-preview">
-                    <div class="psd-preview-box">
-                        PSD
-                        <span class="psd-tag">Photoshop Asset</span>
-                    </div>
-                </div>
-                <div class="gallery-info">
-                    <div>
-                        <div class="item-format">Asset File [PSD]</div>
-                        <h3 class="item-title" data-i18n="item-psd-title">EDM Fold5 Source Design</h3>
-                        <p class="item-desc" data-i18n="item-psd-desc">Archivo original de Photoshop con capas organizadas para el diseño del newsletter comercial del Galaxy Z Fold5.</p>
+                        <h3 class="item-title" data-i18n="item-email-title">EDM Newsletter Design</h3>
+                        <p class="item-desc" data-i18n="item-email-desc">Structure and graphic design for direct email loyalty advertising.</p>
                     </div>
                 </div>
             </div>
@@ -808,10 +785,7 @@
                     "item-email-desc": "Estructura y diseño gráfico final para pauta publicitaria vía correo electrónico directo de fidelización.",
                     
                     "item-banner-title": "Detailed Banner Black &amp; Blue",
-                    "item-banner-desc": "Banner detallado con especificaciones técnicas y maquetación comercial para el portal web.",
-                    
-                    "item-psd-title": "EDM Fold5 Source Design",
-                    "item-psd-desc": "Archivo original de Photoshop con capas organizadas para el diseño del newsletter comercial del Galaxy Z Fold5."
+                    "item-banner-desc": "Banner detallado con especificaciones técnicas y maquetación comercial para el portal web."
                 },
                 en: {
                     "back-btn-text": "← Back to Home",
@@ -857,14 +831,11 @@
                     "item-email-desc": "Visual layout and newsletter design for direct email marketing and loyalty pauta.",
                     
                     "item-banner-title": "Detailed Banner Black &amp; Blue",
-                    "item-banner-desc": "Detailed horizontal banner with specifications and sales layout for the web portal.",
-                    
-                    "item-psd-title": "EDM Fold5 Source Design",
-                    "item-psd-desc": "Original layered Photoshop source file for the Galaxy Z Fold5 commercial email marketing newsletter."
+                    "item-banner-desc": "Detailed horizontal banner with specifications and sales layout for the web portal."
                 }
             };
 
-            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'en';
             const langBtn = document.getElementById('language-toggle-btn');
 
             if (langBtn) {

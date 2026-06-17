@@ -371,7 +371,7 @@
         <div class="gallery-grid">
             <div class="gallery-item">
                 <div class="gallery-preview">
-                    <video muted playsinline loop src="assets/ISA CUP/Video/video isa cup 2026_Final.mp4"></video>
+                    <video autoplay muted playsinline loop preload="auto" src="assets/ISA CUP/Video/video isa cup 2026_Final.mp4"></video>
                     <div class="preview-overlay">
                         <div class="overlay-icon play-icon">▶</div>
                     </div>
@@ -733,7 +733,7 @@
                 }
             };
 
-            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'en';
             const langBtn = document.getElementById('language-toggle-btn');
 
             if (langBtn) {

@@ -276,11 +276,6 @@
             .gallery-title {
                 font-size: 2.2rem;
             }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                max-width: 100%;
-            }
         }
     </style>
 </head>
@@ -316,8 +311,7 @@
             <!-- Video 1: Xanadu Medic RRSS -->
             <div class="gallery-item vertical">
                 <div class="gallery-preview">
-                    <!-- Note the trailing space before .mp4 as exists on filesystem -->
-                    <video muted playsinline loop src="assets/Xanadu/Xanadu Medic_RRSS .mp4"></video>
+                    <video autoplay muted playsinline loop preload="auto" src="assets/Xanadu/Xanadu_Medic_RRSS.mp4"></video>
                     <div class="preview-overlay">
                         <div class="overlay-icon play-icon">▶</div>
                     </div>
@@ -432,7 +426,7 @@
                 }
             };
 
-            let currentLanguage = localStorage.getItem('portfolio-lang') || 'es';
+            let currentLanguage = localStorage.getItem('portfolio-lang') || 'en';
             const langBtn = document.getElementById('language-toggle-btn');
 
             if (langBtn) {

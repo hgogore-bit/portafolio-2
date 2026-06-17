@@ -1435,3 +1435,9 @@ body {
 .text-nowrap {
     white-space: nowrap;
 }
+
+/* Hide item descriptions (subtitles) in sub-galleries as requested */
+.item-desc {
+    display: none !important;
+}
+

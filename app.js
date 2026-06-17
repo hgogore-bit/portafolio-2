@@ -476,9 +476,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
     // 6. i18n Translations Dictionary
-        const translations = {
+    const translations = {
         es: {
             "nav-home": "Inicio",
             "nav-reel": "Reel",
@@ -491,18 +490,21 @@ document.addEventListener('DOMContentLoaded', () => {
             "reel-heading": "HGO Creative Reel — Art Direction, Motion & AI",
             "reel-desc": "Un reel creativo personal que combina dirección de arte, diseño de movimiento, narrativa, producción y experimentación con IA.",
             "about-title": "SOBRE MÍ",
-            "about-p1": "Soy Hugo Garcia Ortega, Art Director & Senior Motion Designer con más de 9 años de experiencia creando campañas digitales, contenido visual y piezas multimedia para marcas en México y Latinoamérica.",
-            "about-p2": "Mi trabajo combina dirección de arte, motion design, edición, producción audiovisual y flujos creativos con IA para convertir ideas en contenido visual de alto nivel para social media, plataformas digitales, campañas y branded content.",
-            "about-p3": "He liderado equipos creativos y colaborado con áreas de marketing, UX/UI y producto, conectando craft visual, storytelling, tecnología y objetivos de negocio.",
-            "about-cv": "Descargar CV (PDF)",
+            "about-p1": "Soy Hugo Garcia Ortega, un Director de Arte y Senior Motion Designer con más de 9 años de experiencia creando campañas digitales, contenido visual y recursos multimedia para marcas en México y Latinoamérica.",
+            "about-p2": "Mi trabajo combina dirección de arte, diseño de movimiento, edición de video, producción creativa y flujos de trabajo basados en IA para convertir ideas en piezas visuales contundentes para redes sociales, plataformas digitales, campañas y contenido de marca.",
+            "about-p3": "He liderado equipos creativos, colaborado con equipos de marketing, UX/UI y producto, y desarrollado contenido multimedia para marcas como Samsung, Bimbo, Quaker State, Grupo Roche y Televisa.",
+            "about-p4": "Me interesan los proyectos donde convergen el craft, el storytelling, la tecnología y los objetivos de negocio.",
+            "about-cv": "Descargar CV",
             "about-skills-title": "Habilidades y Software",
             "skill-1": "Dirección de Arte",
-            "skill-2": "Animación 2D / 3D",
-            "skill-3": "After Effects & Premiere",
-            "skill-4": "Photoshop & Illustrator",
-            "skill-6": "IA Generativa (Runway, Midjourney)",
-            "skill-7": "Producción Audiovisual",
-            "skill-8": "Liderazgo de Equipos",
+            "skill-2": "Producción Creativa",
+            "skill-3": "Diseño de Movimiento 2D / 3D",
+            "skill-4": "After Effects & Premiere",
+            "skill-5": "Photoshop & Illustrator",
+            "skill-6": "Diseño UX/UI & Figma",
+            "skill-7": "Flujos de Trabajo de IA Generativa",
+            "skill-8": "Producción de Video",
+            "skill-9": "Liderazgo de Equipos",
             
             "portfolio-title": "PORTAFOLIO PROFESIONAL",
             "portfolio-desc": "Haz clic en los lomos de los libros para expandir cada caso de estudio profesional.",
@@ -514,9 +516,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Samsung (Digital Campaigns)
             "spine-samsung-title": "SAMSUNG",
-            "spine-samsung-cat": "CAMPAÑA",
-            "book-samsung-title": "Campañas Digitales y Comunicación de Producto",
-            "book-samsung-desc": "Assets de campaña, contenido social, newsletters y sistemas visuales para Samsung Members y activaciones de producto.",
+            "spine-samsung-cat": "CAMPAIGN",
+            "book-samsung-title": "Digital Campaigns & Product Communication",
+            "book-samsung-desc": "Assets de campaña, contenido social, key visuals, newsletters e interfaces para Samsung Members y activaciones de producto.",
             "book-samsung-bullet-1": "Dirección de arte y diseño digital para campañas de producto, eventos y promociones.",
             "book-samsung-bullet-2": "Animación y adaptación de piezas para redes sociales, email marketing, web y plataformas digitales.",
             "book-samsung-bullet-3": "Diseño de assets visuales para Samsung Members, lanzamientos y experiencias de marca.",
@@ -525,8 +527,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Jafra (Digital Campaigns)
             "spine-jafra-title": "JAFRA",
-            "spine-jafra-cat": "CAMPAÑA",
-            "book-jafra-title": "Campañas de Belleza y Contenido Social",
+            "spine-jafra-cat": "CAMPAIGN",
+            "book-jafra-title": "Beauty Campaigns & Social Content",
             "book-jafra-desc": "Campañas digitales, videos de producto y piezas de motion para lanzamientos de cosmética, skincare y cuidado personal.",
             "book-jafra-bullet-1": "Dirección de arte y producción visual para campañas de productos de belleza.",
             "book-jafra-bullet-2": "Edición y postproducción de videos promocionales en formato digital.",
@@ -536,9 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Ya Ganaste (Digital Campaigns)
             "spine-yaganaste-title": "YA GANASTE",
-            "spine-yaganaste-cat": "CAMPAÑA",
-            "book-yaganaste-title": "Campañas Fintech y Contenido B2B",
-            "book-yaganaste-desc": "Contenido social, videos y assets de campaña para comunicar soluciones de pago, funciones de la app y herramientas comerciales.",
+            "spine-yaganaste-cat": "CAMPAIGN",
+            "book-yaganaste-title": "Fintech Campaigns & B2B Content",
+            "book-yaganaste-desc": "Contenido social, videos y assets de campaña creados para comunicar soluciones de pago, funciones de la app y herramientas comerciales.",
             "book-yaganaste-bullet-1": "Dirección de arte y producción de contenido para campañas de adquisición B2B.",
             "book-yaganaste-bullet-2": "Videos verticales y piezas sociales para explicar funcionalidades de pago, recargas y terminales.",
             "book-yaganaste-bullet-3": "Diseño de comunicación visual para alianzas comerciales y lanzamientos de producto.",
@@ -548,8 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // AI Art (Personal -> Digital Campaigns)
             "spine-ai-title": "GENERATIVE AI ART",
-            "spine-ai-cat": "ARTE IA",
-            "book-ai-title": "Dirección Visual y Experimentos con IA",
+            "spine-ai-cat": "AI ART",
+            "book-ai-title": "AI Visual Direction & Experiments",
             "book-ai-desc": "Flujos de trabajo híbridos que combinan IA generativa, motion, edición y postproducción para la exploración de contenido visual.",
             "book-ai-bullet-1": "Desarrollo de conceptos visuales y piezas animadas usando herramientas de IA generativa.",
             "book-ai-bullet-2": "Integración de IA, edición, motion graphics y composición en flujos híbridos de producción.",
@@ -559,9 +561,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Xanadu Medic (Motion)
             "spine-xanadu-title": "XANADU MEDIC",
-            "spine-xanadu-cat": "POSTPROD",
-            "book-xanadu-title": "Video Médico y Postproducción",
-            "book-xanadu-desc": "Contenido de video institucional y educativo con edición, motion graphics, diseño de sonido y corrección de color.",
+            "spine-xanadu-cat": "POST-PROD",
+            "book-xanadu-title": "Medical Video & Post-Production",
+            "book-xanadu-desc": "Contenido de video de carácter institucional y educativo con edición, motion graphics, diseño de sonido y corrección de color.",
             "book-xanadu-bullet-1": "Edición y postproducción de videos médicos, institucionales y de capacitación.",
             "book-xanadu-bullet-2": "Motion graphics para explicar procesos, servicios e información especializada.",
             "book-xanadu-bullet-3": "Corrección de color, diseño sonoro y pulido final para una estética profesional.",
@@ -570,8 +572,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // ISA CUP (Motion)
             "spine-isacup-title": "ISA CUP",
-            "spine-isacup-cat": "POSTPROD",
-            "book-isacup-title": "Cobertura de Eventos Deportivos",
+            "spine-isacup-cat": "POST-PROD",
+            "book-isacup-title": "Motorsport Event Coverage",
             "book-isacup-desc": "Fotografía, edición de video y motion graphics para contenido de eventos de automovilismo y comunicación digital.",
             "book-isacup-bullet-1": "Edición y montaje dinámico de resúmenes de competencia.",
             "book-isacup-bullet-2": "Fotografía y cobertura audiovisual de evento deportivo.",
@@ -581,9 +583,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Bimbo (Motion)
             "spine-bimbo-title": "BIMBO",
-            "spine-bimbo-cat": "POSTPROD",
-            "book-bimbo-title": "Motion Corporativo y Contenido de Video",
-            "book-bimbo-desc": "Motion graphics, edición y postproducción para comunicación institucional y de marca.",
+            "spine-bimbo-cat": "POST-PROD",
+            "book-bimbo-title": "Corporate Motion & Video Content",
+            "book-bimbo-desc": "Motion corporativo, contenido de video y postproducción para comunicación institucional y de marca.",
             "book-bimbo-bullet-1": "Animación y edición de contenidos corporativos y promocionales.",
             "book-bimbo-bullet-2": "Motion graphics para explicar procesos, recorridos y comunicación interna.",
             "book-bimbo-bullet-3": "Postproducción audiovisual alineada a lineamientos de marca.",
@@ -593,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Personal Work (Combined)
             "spine-personal-work-title": "PERSONAL WORK",
             "spine-personal-work-cat": "PERSONAL",
-            "book-personal-work-title": "Fotografía y Producción Visual",
+            "book-personal-work-title": "Photography & Visual Production",
             "book-personal-work-desc": "Fotografía personal, video relacionado con la música e experimentos visuales independientes enfocados en la atmósfera y la narrativa.",
             "book-personal-work-bullet-1": "Fotografía de retrato, composición, atmósfera y narrativa visual.",
             "book-personal-work-bullet-2": "Edición y producción de video y piezas audiovisuales independientes.",
@@ -603,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "book-personal-gallery-btn-2": "Ver Videos",
 
             "contact-title": "CONTACTO",
-            "contact-heading": "¿Hacemos algo increíble juntos?",
+            "contact-heading": "Colaboremos",
             "contact-desc": "Abierto a oportunidades como Director de Arte, Senior Motion Designer, Creative Producer y perfiles de contenido visual con IA.",
             "contact-location-label": "Ubicación:",
             "contact-location": "México, CDMX",
@@ -620,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             "nav-home": "Home",
             "nav-reel": "Reel",
-            "nav-about": "About Me",
+            "nav-about": "About",
             "nav-portfolio": "Portfolio",
             "nav-personal": "Personal Work",
             "nav-contact": "Contact",
@@ -629,18 +631,21 @@ document.addEventListener('DOMContentLoaded', () => {
             "reel-heading": "HGO Creative Reel — Art Direction, Motion & AI",
             "reel-desc": "A personal creative reel combining art direction, motion design, storytelling, production and AI experimentation.",
             "about-title": "ABOUT ME",
-            "about-p1": "I am Hugo Garcia Ortega, Art Director & Senior Motion Designer with over 9 years of experience creating digital campaigns, visual content, and multimedia pieces for brands in Mexico and Latin America.",
-            "about-p2": "My work combines art direction, motion design, editing, audiovisual production, and creative AI workflows to transform ideas into high-level visual content for social media, digital platforms, campaigns, and branded content.",
-            "about-p3": "I have led creative teams and collaborated with marketing, UX/UI, and product departments, connecting visual craft, storytelling, technology, and business objectives.",
-            "about-cv": "Download CV (PDF)",
+            "about-p1": "I’m Hugo Garcia Ortega, an Art Director and Senior Motion Designer with 9+ years of experience creating digital campaigns, visual content and multimedia assets for brands across Mexico and Latin America.",
+            "about-p2": "My work combines art direction, motion design, video editing, creative production and AI-powered workflows to turn ideas into strong visual pieces for social media, digital platforms, campaigns and branded content.",
+            "about-p3": "I’ve led creative teams, collaborated with marketing, UX/UI and product teams, and developed multimedia content for brands such as Samsung, Bimbo, Quaker State, Roche Group and Televisa.",
+            "about-p4": "I’m interested in projects where craft, storytelling, technology and business goals meet.",
+            "about-cv": "Download CV",
             "about-skills-title": "Skills & Software",
             "skill-1": "Art Direction",
-            "skill-2": "2D / 3D Animation",
-            "skill-3": "After Effects & Premiere",
-            "skill-4": "Photoshop & Illustrator",
-            "skill-6": "Generative AI (Runway, Midjourney)",
-            "skill-7": "Audiovisual Production",
-            "skill-8": "Team Leadership",
+            "skill-2": "Creative Production",
+            "skill-3": "2D / 3D Motion Design",
+            "skill-4": "After Effects & Premiere",
+            "skill-5": "Photoshop & Illustrator",
+            "skill-6": "UX/UI Design & Figma",
+            "skill-7": "Generative AI Workflows",
+            "skill-8": "Video Production",
+            "skill-9": "Team Leadership",
             
             "portfolio-title": "PROFESSIONAL PORTFOLIO",
             "portfolio-desc": "Click on the book spines to expand each professional case study.",
@@ -654,7 +659,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "spine-samsung-title": "SAMSUNG",
             "spine-samsung-cat": "CAMPAIGN",
             "book-samsung-title": "Digital Campaigns & Product Communication",
-            "book-samsung-desc": "Campaign assets, social content, newsletters and visual systems for Samsung Members and product activations.",
+            "book-samsung-desc": "Campaign assets, social content, key visuals, newsletters and interface work for Samsung Members and product activations.",
             "book-samsung-bullet-1": "Art direction and digital design for product campaigns, events, and promotions.",
             "book-samsung-bullet-2": "Animation and asset adaptation for social networks, email marketing, web, and digital platforms.",
             "book-samsung-bullet-3": "Visual asset design for Samsung Members, launches, and brand experiences.",
@@ -676,7 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "spine-yaganaste-title": "YA GANASTE",
             "spine-yaganaste-cat": "CAMPAIGN",
             "book-yaganaste-title": "Fintech Campaigns & B2B Content",
-            "book-yaganaste-desc": "Social content, videos and campaign assets to communicate payment solutions, app features and business tools.",
+            "book-yaganaste-desc": "Social content, videos and campaign assets created to communicate payment solutions, app features and business tools.",
             "book-yaganaste-bullet-1": "Art direction and content production for B2B acquisition campaigns.",
             "book-yaganaste-bullet-2": "Vertical videos and social assets to explain payment, top-up, and POS terminal features.",
             "book-yaganaste-bullet-3": "Visual communication design for commercial partnerships and product launches.",
@@ -688,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "spine-ai-title": "GENERATIVE AI ART",
             "spine-ai-cat": "AI ART",
             "book-ai-title": "AI Visual Direction & Experiments",
-            "book-ai-desc": "Hybrid workflows combining generative AI, motion, editing and postproduction for visual content exploration.",
+            "book-ai-desc": "Hybrid workflows combining generative AI, motion, editing and post-production for visual content exploration.",
             "book-ai-bullet-1": "Development of visual concepts and animated pieces using generative AI tools.",
             "book-ai-bullet-2": "Integration of AI, editing, motion graphics, and composition in hybrid production workflows.",
             "book-ai-bullet-3": "Experimentation with characters, visual styles, brand metaphors, and audiovisual narrative.",
@@ -698,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Xanadu Medic (Motion)
             "spine-xanadu-title": "XANADU MEDIC",
             "spine-xanadu-cat": "POST-PROD",
-            "book-xanadu-title": "Medical Video & Postproduction",
+            "book-xanadu-title": "Medical Video & Post-Production",
             "book-xanadu-desc": "Institutional and educational video content with editing, motion graphics, sound design and color correction.",
             "book-xanadu-bullet-1": "Editing and postproduction of medical, institutional, and training videos.",
             "book-xanadu-bullet-2": "Motion graphics to explain processes, services, and specialized information.",
@@ -709,7 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // ISA CUP (Motion)
             "spine-isacup-title": "ISA CUP",
             "spine-isacup-cat": "POST-PROD",
-            "book-isacup-title": "Sports Event Coverage",
+            "book-isacup-title": "Motorsport Event Coverage",
             "book-isacup-desc": "Photography, video editing and motion graphics for motorsport event content and digital communication.",
             "book-isacup-bullet-1": "Editing and dynamic assembly of highlights.",
             "book-isacup-bullet-2": "Photography and audiovisual coverage of sports events.",
@@ -721,7 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "spine-bimbo-title": "BIMBO",
             "spine-bimbo-cat": "POST-PROD",
             "book-bimbo-title": "Corporate Motion & Video Content",
-            "book-bimbo-desc": "Motion graphics, editing and postproduction for branded and institutional communication.",
+            "book-bimbo-desc": "Corporate motion, video content, and post-production for branded and institutional communication.",
             "book-bimbo-bullet-1": "Animation and editing of corporate and promotional content.",
             "book-bimbo-bullet-2": "Motion graphics to explain processes, walkthroughs, and internal communication.",
             "book-bimbo-bullet-3": "Audiovisual postproduction aligned with brand guidelines.",
@@ -741,16 +746,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "book-personal-gallery-btn-2": "View Videos",
 
             "contact-title": "CONTACT",
-            "contact-heading": "Should we make something amazing together?",
-            "contact-desc": "Open to opportunities as an Art Director, Senior Motion Designer, Creative Producer, and visual content profiles with AI.",
+            "contact-heading": "Let's collaborate",
+            "contact-desc": "Open to opportunities as an Art Director, Senior Motion Designer, Creative Producer and AI Visual Content profile.",
             "contact-location-label": "Location:",
-            "contact-location": "Mexico City, Mexico",
+            "contact-location": "Mexico, CDMX",
             "form-name-label": "Name",
             "form-name-ph": "Your name",
-            "form-email-label": "Email Address",
-            "form-email-ph": "Your email address",
+            "form-email-label": "Email",
+            "form-email-ph": "Your email",
             "form-message-label": "Message",
-            "form-message-ph": "What type of project are you thinking of?",
+            "form-message-ph": "What kind of project are you thinking of?",
             "form-submit": "Send Message",
             "footer-copy": "&copy; 2026 Hugo García Ortega (H G O). All rights reserved."
         }

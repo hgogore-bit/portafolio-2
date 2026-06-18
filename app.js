@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "book-jafra-desc": "Campañas digitales, videos de producto y piezas de motion para lanzamientos de cosmética, skincare y cuidado personal.",
             "book-jafra-bullet-1": "Dirección de arte y producción visual para campañas de productos de belleza.",
             "book-jafra-bullet-2": "Edición y postproducción de videos promocionales en formato digital.",
-            "book-jafra-bullet-3": "Motion graphics, animación tipográfica y composición para piezas de social media.",
+            "book-jafra-bullet-3": "Diseño y desarrollo de estrategias visuales para impulsar su ecosistema digital.",
             "book-jafra-bullet-4": "Adaptación de formatos para pauta, redes sociales y comunicación comercial.",
             "book-jafra-gallery-btn": "Ver Galería de Proyectos",
 
@@ -673,7 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "book-jafra-desc": "Digital campaigns, product videos and motion pieces for beauty, skincare and personal care launches.",
             "book-jafra-bullet-1": "Art direction and visual production for beauty product campaigns.",
             "book-jafra-bullet-2": "Editing and postproduction of promotional videos in digital format.",
-            "book-jafra-bullet-3": "Motion graphics, typographic animation, and composition for social media assets.",
+            "book-jafra-bullet-3": "Design and development of visual strategies to boost their digital ecosystem.",
             "book-jafra-bullet-4": "Format adaptation for digital ads, social networks, and commercial communication.",
             "book-jafra-gallery-btn": "View Projects Gallery",
 

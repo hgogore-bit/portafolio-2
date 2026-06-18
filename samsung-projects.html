@@ -654,7 +654,7 @@
                 imgObj.src = imagePreviews[index].src;
                 imgObj.onload = () => {
                     const aspectRatio = imgObj.naturalWidth / imgObj.naturalHeight;
-                    if (aspectRatio < 0.6) {
+                    if (aspectRatio < 0.4) {
                         lightboxImg.classList.add('tall-image');
                         // Set width limit between 600px and 800px depending on natural size to keep it sharp
                         const targetMaxWidth = Math.max(600, Math.min(800, imgObj.naturalWidth));

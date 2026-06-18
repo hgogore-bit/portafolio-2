@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H G O | Bimbo Projects &amp; Campaigns</title>
-    <meta name="description" content="Gallery of corporate video projects and motion graphics for Grupo Bimbo.">
+    <meta name="description" content="Gallery of commercial video production, campaign spots, and motion graphics for Grupo Bimbo.">
     <!-- Google Fonts: Outfit, Courier Prime -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,12 +76,24 @@
             margin: 0 auto;
         }
 
+        .gallery-section-title {
+            font-family: var(--ff-mono);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+            margin: 4rem 0 2rem 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--clr-primary);
+            padding-left: 1rem;
+        }
+
         /* Responsive CSS Grid for Showcase items */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
         }
 
         .gallery-item {
@@ -104,7 +116,7 @@
 
         .gallery-preview {
             width: 100%;
-            aspect-ratio: 16 / 9; /* Horizontal format */
+            aspect-ratio: 16 / 9;
             background-color: #030406;
             overflow: hidden;
             position: relative;
@@ -112,7 +124,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-bottom: 1px solid var(--clr-border);
         }
 
         /* Muted looping video default styles */
@@ -121,7 +132,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: filter 0.3s;
         }
 
         /* Hover indicator for playing videos */
@@ -176,16 +186,6 @@
             justify-content: space-between;
         }
 
-        .item-format {
-            font-family: var(--ff-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--clr-primary);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.5rem;
-        }
-
         .item-title {
             font-size: 1.25rem;
             font-weight: 700;
@@ -197,7 +197,7 @@
         .item-desc {
             font-size: 0.95rem;
             color: var(--clr-text-muted);
-            line-height: 1.6;
+            line-height: 1.5;
             letter-spacing: 0.5px;
         }
 
@@ -235,11 +235,10 @@
 
         .lightbox-video {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 85vh;
             border-radius: var(--radius-sm);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
             border: 1px solid var(--clr-border);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
-            object-fit: contain;
             background-color: #000;
         }
 
@@ -249,13 +248,11 @@
             right: 0;
             background: none;
             border: none;
-            color: #fff;
-            font-size: 2.2rem;
+            color: var(--clr-text-main);
+            font-size: 2.5rem;
             cursor: pointer;
-            transition: color 0.2s, transform 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: var(--transition-fast);
+            line-height: 1;
         }
 
         .lightbox-close:hover {
@@ -263,12 +260,53 @@
             transform: scale(1.1);
         }
 
-        @media (max-width: 768px) {
-            .gallery-page {
-                padding-top: 100px;
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--clr-border);
+            color: var(--clr-text-main);
+            font-size: 2rem;
+            padding: 0.8rem 1.1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: var(--transition-fast);
+            z-index: 2010;
+            user-select: none;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-prev {
+            left: -80px;
+        }
+
+        .lightbox-next {
+            right: -80px;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background-color: var(--clr-primary);
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 15px var(--clr-primary-glow);
+            color: #fff;
+        }
+
+        @media (max-width: 992px) {
+            .lightbox-prev {
+                left: 10px;
             }
-            .gallery-title {
-                font-size: 2.2rem;
+            .lightbox-next {
+                right: 10px;
+            }
+            .lightbox-close {
+                top: -60px;
+                right: 10px;
             }
         }
     </style>
@@ -293,9 +331,9 @@
         <!-- Campaign Description Block -->
         <div class="gallery-description-block">
             <ul class="gallery-desc-list">
-                <li data-i18n="gallery-bullet-1"><strong>Digital Commercial Animation:</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.</strong> Edición y animación de contenidos promocionales oficiales para Grupo Bimbo en canales digitales nacionales.</li>
-                <li data-i18n="gallery-bullet-2"><strong>Corporate Communication:</strong> Design and development of motion graphics and animated explanatory videos for global internal communication campaigns.</strong> Design and development of motion graphics and animated explanatory videos for global internal communication campaigns.</strong> Design and development of motion graphics and animated explanatory videos for global internal communication campaigns.</strong> Design and development of motion graphics and animated explanatory videos for global internal communication campaigns.</strong> Design and development of motion graphics and animated explanatory videos for global internal communication campaigns.</strong> Design and development of motion graphics and animated explanatory videos for global internal communication campaigns.</strong> Diseño y desarrollo de motion graphics y videos animados explicativos para campañas globales de comunicación interna.</li>
-                <li data-i18n="gallery-bullet-3"><strong>Audiovisual Post-production:</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.</strong> Edición y pulido final de comerciales de televisión y redes, alineados a estrictos manuales de branding.</li>
+                <li data-i18n="gallery-bullet-1"><strong>Digital Commercial Animation:</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.</li>
+                <li data-i18n="gallery-bullet-2"><strong>Spot Production:</strong> Planning, filming, and production of commercial spots and content campaigns for the brand.</li>
+                <li data-i18n="gallery-bullet-3"><strong>Audiovisual Post-production:</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.</li>
             </ul>
         </div>
 
@@ -314,7 +352,7 @@
                     <div>
                         <div class="item-format">Video [MP4] - 16x9</div>
                         <h3 class="item-title" data-i18n="bimbo-item-1-title">CDM Bimbo</h3>
-                        <p class="item-desc" data-i18n="bimbo-item-1-desc">Corporate and animated institutional commercial spot for Grupo Bimbo.</p>
+                        <p class="item-desc" data-i18n="bimbo-item-1-desc">Filming, planning, and production of campaign spots for the brand.</p>
                     </div>
                 </div>
             </div>
@@ -429,10 +467,10 @@
                     "gallery-title": "Bimbo Campaigns",
                     "gallery-desc": "Galería de recursos audiovisuales y piezas creativas para Grupo Bimbo.",
                     "gallery-bullet-1": "<strong>Animación Comercial Digital:</strong> Edición y animación de contenidos promocionales oficiales para Grupo Bimbo en canales digitales nacionales.",
-                    "gallery-bullet-2": "<strong>Comunicación Corporativa:</strong> Diseño y desarrollo de motion graphics y videos animados explicativos para campañas globales de comunicación interna.",
+                    "gallery-bullet-2": "<strong>Producción de Spots:</strong> Planeación, grabación y producción de spots publicitarios y campañas de contenido para la marca.",
                     "gallery-bullet-3": "<strong>Postproducción Audiovisual:</strong> Edición y pulido final de comerciales de televisión y redes, alineados a estrictos manuales de branding.",
                     "bimbo-item-1-title": "CDM Bimbo",
-                    "bimbo-item-1-desc": "Comercial corporativo e institucional animado para Grupo Bimbo.",
+                    "bimbo-item-1-desc": "Grabación, planeación y producción de spots de campaña sobre la marca.",
                     "bimbo-item-2-title": "Ceve Toluca",
                     "bimbo-item-2-desc": "Recorrido explicativo y video promocional animado del centro de distribución Ceve Toluca."
                 },
@@ -441,10 +479,10 @@
                     "gallery-title": "Bimbo Campaigns",
                     "gallery-desc": "Gallery of audiovisual resources and creative items for Grupo Bimbo.",
                     "gallery-bullet-1": "<strong>Digital Commercial Animation:</strong> Editing and animation of official promotional content for Grupo Bimbo on national digital channels.",
-                    "gallery-bullet-2": "<strong>Corporate Communication:</strong> Design and development of motion graphics and animated explanatory videos for global internal communication campaigns.",
+                    "gallery-bullet-2": "<strong>Spot Production:</strong> Planning, filming, and production of commercial spots and content campaigns for the brand.",
                     "gallery-bullet-3": "<strong>Audiovisual Post-production:</strong> Editing and final polishing of TV and social media commercials, aligned with strict branding manuals.",
                     "bimbo-item-1-title": "CDM Bimbo",
-                    "bimbo-item-1-desc": "Corporate and animated institutional commercial spot for Grupo Bimbo.",
+                    "bimbo-item-1-desc": "Filming, planning, and production of campaign spots for the brand.",
                     "bimbo-item-2-title": "Ceve Toluca",
                     "bimbo-item-2-desc": "Animated walkthrough and promotional explainer video of the Ceve Toluca distribution center."
                 }

@@ -584,12 +584,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Bimbo (Motion)
             "spine-bimbo-title": "BIMBO",
             "spine-bimbo-cat": "POST-PROD",
-            "book-bimbo-title": "Corporate Motion & Video Content",
-            "book-bimbo-desc": "Motion corporativo, contenido de video y postproducción para comunicación institucional y de marca.",
-            "book-bimbo-bullet-1": "Animación y edición de contenidos corporativos y promocionales.",
-            "book-bimbo-bullet-2": "Motion graphics para explicar procesos, recorridos y comunicación interna.",
-            "book-bimbo-bullet-3": "Postproducción audiovisual alineada a lineamientos de marca.",
-            "book-bimbo-bullet-4": "Desarrollo de piezas claras para comunicación institucional y canales digitales.",
+            "book-bimbo-title": "Campaign Spots & Video Production",
+            "book-bimbo-desc": "Planeación, grabación, producción y spots de campañas sobre la marca.",
+            "book-bimbo-bullet-1": "Planeación y preproducción de spots comerciales y de campaña.",
+            "book-bimbo-bullet-2": "Grabación en locación y producción audiovisual de alta calidad.",
+            "book-bimbo-bullet-3": "Edición y postproducción digital de contenidos promocionales.",
+            "book-bimbo-bullet-4": "Alineación estética con los lineamientos visuales y de branding de la marca.",
             "book-bimbo-gallery-btn": "Ver Galería de Proyectos",
 
             // Personal Work (Combined)
@@ -725,12 +725,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Bimbo (Motion)
             "spine-bimbo-title": "BIMBO",
             "spine-bimbo-cat": "POST-PROD",
-            "book-bimbo-title": "Corporate Motion & Video Content",
-            "book-bimbo-desc": "Corporate motion, video content, and post-production for branded and institutional communication.",
-            "book-bimbo-bullet-1": "Animation and editing of corporate and promotional content.",
-            "book-bimbo-bullet-2": "Motion graphics to explain processes, walkthroughs, and internal communication.",
-            "book-bimbo-bullet-3": "Audiovisual postproduction aligned with brand guidelines.",
-            "book-bimbo-bullet-4": "Development of clear pieces for institutional communication and digital channels.",
+            "book-bimbo-title": "Campaign Spots & Video Production",
+            "book-bimbo-desc": "Planning, filming, and production of commercial spots and communication campaigns for the brand.",
+            "book-bimbo-bullet-1": "Planning and pre-production of commercial and campaign spots.",
+            "book-bimbo-bullet-2": "On-location filming and high-quality visual production.",
+            "book-bimbo-bullet-3": "Digital editing and post-production of promotional content.",
+            "book-bimbo-bullet-4": "Aesthetic alignment with the brand's visual identity and guidelines.",
             "book-bimbo-gallery-btn": "View Projects Gallery",
 
             // Personal Work (Combined)

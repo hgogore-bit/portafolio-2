@@ -573,8 +573,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // ISA CUP (Motion)
             "spine-isacup-title": "ISA CUP",
             "spine-isacup-cat": "POST-PROD",
-            "book-isacup-title": "Motorsport Event Coverage",
-            "book-isacup-desc": "Fotografía, edición de video y motion graphics para contenido de eventos de automovilismo y comunicación digital.",
+            "book-isacup-title": "Football Event Coverage",
+            "book-isacup-desc": "Fotografía, edición de video y motion graphics para contenido de torneos de fútbol y comunicación digital.",
             "book-isacup-bullet-1": "Edición y montaje dinámico de resúmenes de competencia.",
             "book-isacup-bullet-2": "Fotografía y cobertura audiovisual de evento deportivo.",
             "book-isacup-bullet-3": "Motion graphics, títulos, transiciones y recursos visuales para reforzar narrativa.",
@@ -714,8 +714,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // ISA CUP (Motion)
             "spine-isacup-title": "ISA CUP",
             "spine-isacup-cat": "POST-PROD",
-            "book-isacup-title": "Motorsport Event Coverage",
-            "book-isacup-desc": "Photography, video editing and motion graphics for motorsport event content and digital communication.",
+            "book-isacup-title": "Football Event Coverage",
+            "book-isacup-desc": "Photography, video editing and motion graphics for football event content and digital communication.",
             "book-isacup-bullet-1": "Editing and dynamic assembly of highlights.",
             "book-isacup-bullet-2": "Photography and audiovisual coverage of sports events.",
             "book-isacup-bullet-3": "Motion graphics, titles, transitions, and visual assets to reinforce narrative.",
